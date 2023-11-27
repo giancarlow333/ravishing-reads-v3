@@ -1,6 +1,6 @@
 
 
-const Profile = () => {
+const List = () => {
   
   return (
     <section>
@@ -30,4 +30,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default List;
