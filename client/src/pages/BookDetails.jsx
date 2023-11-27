@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { useMutation } from '@apollo/client';
 
 const BookDetails = () => {
     return (
@@ -5,7 +7,7 @@ const BookDetails = () => {
         <div class = "flex justify-between items-center  flex-col w-5/6 h-full overflow-auto bg-white opacity-90 brightness-100 ">
             <div class = "flex flex-row justify-top items-top w-full h-3/5">
                 <div class = "flex flex-col justify-top items-center w-1/4 p-6">
-                    <img class = "rounded-sm "src = "./public/img/avators/alice.jpg" />
+                    <img class = "rounded-sm "src = "./img/avators/alice.jpg" />
                     <button class = "text-sky-100 text-center bg-orange-950 w-28 h-10 m-1 shadow-inner shadow-white">Remove Book</button>
                 </div>
                 <div class = " w-3/4 flex flex-col justify-top items-top ">
