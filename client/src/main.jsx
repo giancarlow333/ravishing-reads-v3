@@ -1,13 +1,18 @@
 import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+// Bringing in the required imports from 'react-router-dom' to set up application routing behavior
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import './index.css';
 
-import App from './App.jsx'
-import Home from './pages/Home'
-import List from './pages/List.jsx'
-import BookDetails from './pages/BookDetails'
-import Error from './pages/Error'
-import Signup from './pages/Signup.jsx'
 
+import App from './App';
+import Error from './pages/Error';
+import Home from './pages/home.jsx'; //booksearch page 
+import Bookdetails from './pages/Bookdetails.jsx';
+import Login from './pages/Login.jsx';
+import Signup from './pages/Signup.jsx';
+import Mylist from './pages/Mylist.jsx';
+import Book from './pages/Book.jsx';
+// Define the accessible routes, and which components respond to which URL
 const router = createBrowserRouter([
   {
     path: '/',
@@ -19,16 +24,28 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: '/lists',
-        element: <List />,
+        path: '/Bookdetails',
+        element: <Bookdetails />,
       },
       {
-        path: '/signup',
-        element: <Signup />,
+        path: '/Login',
+        element: <Login />,
       },
       {
-        path: '/bookdetails', /* FOR TESTING; final is '/book/:bookId', */
-        element: <BookDetails />,
+        path: '/Signup',
+        element: <Signup/>,
+      },
+      {
+        path: '/Logout',
+        element: <Home />,
+      },
+      {
+        path: 'Mylist',
+        element: <Mylist />,
+      },
+      {
+        path: 'Book',
+        element: <Book />,
       },
     ],
   },
@@ -36,4 +53,4 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <RouterProvider router={router} />
-)
+);
