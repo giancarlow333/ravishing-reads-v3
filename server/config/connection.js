@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 
 require('dotenv').config(); // REMOVE ON PRODUCTION
 

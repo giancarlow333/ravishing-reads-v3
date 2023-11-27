@@ -1,7 +1,7 @@
 
 import Header from '../components/Header';
 
-function Home() {
+function Mylist() {
     return (
     <div className="flex flex-row h-screen w-screen ">    
            <Header />
@@ -19,12 +19,8 @@ function Home() {
                 <div className="flex flex-row bg-white bg-opacity-80 w-10/12 h-64 shadow-md shadow-slate-900 rounded-md shrink mb-2">
                     <div className="flex flex-col justify-center items-center w-2/12 py-2">
                         <img className="w-8/12 rounded-sm" src='./img/avators/alice.jpg' alt="Alice in Wonderland" />
-                        <button id="addToListBtn" className="text-sky-100 text-center bg-sky-600 w-28 h-8 m-1 shadow-inner shadow-white">Add </button>
-                        <select id="listSelect" className="hidden">
-                            <option value="readingList">Reading List</option>
-                            <option value="wishlist">Wishlist</option>
-                            <option value="favorites">Favorites</option>
-                        </select>
+                        <a href="/Bookdetails" id="addToListBtn" className="text-sky-100 text-center bg-sky-600 w-28 h-8 m-1 shadow-inner shadow-white">View</a>
+                   
                     </div>
                     <div className="flex flex-col w-10/12 mr-8">
                         <p className="text-orange-950 text-left text-2xl justify-self-center font-bold antialiased mt-2">Alice in Wonderland <span className="text-blue-600 text-sm">(2019)</span></p>
@@ -39,4 +35,4 @@ function Home() {
     </div>
     );
 }
-export default Home;
+export default Mylist;
