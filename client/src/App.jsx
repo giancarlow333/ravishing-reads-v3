@@ -14,13 +14,9 @@ function App() {
   return (
     
     <ApolloProvider client={client}>
-      <div className="bg-repeat" style={{backgroundImage: "url(./img/Backgrounds/bookpages.jpeg)"}}>
-        <Header />
-        <div className="container">
-          <Outlet />
+        <div className="flex flex-row h-screen w-screen overflow-auto">
+         <Outlet />
         </div>
-        <Footer />
-      </div>
     </ApolloProvider>
   );
 }
