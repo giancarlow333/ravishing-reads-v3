@@ -6,7 +6,7 @@ const cleanDB = require('./cleanDB');
 
 db.once('open', async () => {
   try {
-    await cleanDB('Profiles', 'profiles');
+    await cleanDB('Profile', 'profile');
     await cleanDB('Books', 'books');
 
     await Profile.create(profileSeeds);

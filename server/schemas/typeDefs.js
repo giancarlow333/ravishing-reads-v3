@@ -1,7 +1,7 @@
 const typeDefs = `
   type Profile {
     _id: ID
-    userId: Int
+    # userId: Int
     username: String
     email: String
     # There is now a field to store the user's password
