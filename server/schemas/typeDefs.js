@@ -1,12 +1,39 @@
 const typeDefs = `
   type Profile {
     _id: ID
-    name: String
+    userId: Number
+    username: String
     email: String
     # There is now a field to store the user's password
     password: String
-    skills: [String]!
+    Already_Read: [Book]!
+    To_Reads: [Book]!
+    Wishlist: [Book]!
   }
+
+  type Note {
+    _id: ID
+    noteID: ID
+    noteText: String
+    createdAt: String
+    rating: Number
+  }
+
+  type Book {
+    _id: ID
+    title: Strong
+    author: String
+    ISBN: String
+    pub_Date: String
+    title: String
+    description: String
+    page_Count: Number
+    img_Link: String
+    link: String
+    notes: [Note]!
+    lastAccessed: String
+  }
+
 
   # Set up an Auth type to handle returning data from a profile creating or user login
   type Auth {
