@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
-const Reads = require("./Books");
+const Book = require('./Books');
 
 const profileSchema = new Schema({
   userId: {
@@ -24,24 +24,10 @@ const profileSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  // Already_Read: [
-  //   {
-  //     type: Schema.Types.ObjectId,
-  //     ref: "Book",
-  //   },
-  // ],
-  // To_Reads: [
-  //   {
-  //     type: Schema.Types.ObjectId,
-  //     ref: "Book",
-  //   },
-  // ],
-  // Wishlist: [
-  //   {
-  //     type: Schema.Types.ObjectId,
-  //     ref: "Book",
-  //   },
-  // ],
+  Lists: [
+    {Already_Read: [Book]},
+    {To_Reads: [Book]},
+    {Wishist: [Book]},],
 },
 { toJSON: {
     virtuals: true}});
@@ -83,6 +69,6 @@ profileSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-const Profile = model("Profile", profileSchema);
+const Profile = model('Profile', profileSchema);
 
 module.exports = Profile;
