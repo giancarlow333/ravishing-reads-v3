@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_PROFILES = gql`
-  query allProfiles {
+  query getProfiles {
     profiles {
       userId
       user
@@ -65,8 +65,7 @@ export const QUERY_PROFILES = gql`
 
 export const QUERY_SINGLE_PROFILES = gql`
   query getSingleProfile($userId: ID!) {
-    thought(userId: $userId) {
-    profiles {
+    profile (userId: $userId) {
       userId
       user
       email
@@ -124,5 +123,75 @@ export const QUERY_SINGLE_PROFILES = gql`
           rating
       }
     }
+  }
+`;
+
+export const QUERY_BOOKS = gql`
+  query getBooks {
+    books {
+        bookId
+        title
+        author
+        ISBN
+        pub_Date
+        description
+        page_Count
+        img_Link
+        link
+        notes {
+          noteId
+          createdAt
+          userId
+          noteText
+          rating
+        }
+    }
+  }
+`;
+
+export const QUERY_SINGLE_BOOK = gql`
+query getSingleBook($bookId: ID!) {
+  book (bookId: $bookId) {
+        bookId
+        title
+        author
+        ISBN
+        pub_Date
+        description
+        page_Count
+        img_Link
+        link
+        notes {
+          noteId
+          createdAt
+          userId
+          noteText
+          rating
+        }
+    }
+  }
+`;
+
+export const QUERY_NOTES = gql`
+  query getNotes {
+      notes {
+        noteId
+        createdAt
+        userId
+        noteText
+        rating
+       }
+  }
+`;
+
+export const QUERY_SINGLE_NOTES = gql`
+query getSingleNote($noteId: ID!) {
+  note (noteId: $noteId){
+        noteId
+        createdAt
+        userId
+        noteText
+        rating
+       }
   }
 `;
