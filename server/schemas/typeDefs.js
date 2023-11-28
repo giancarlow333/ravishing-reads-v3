@@ -21,7 +21,7 @@ const typeDefs = `
 
   type Book {
     _id: ID
-    title: Strong
+    title: String
     author: String
     ISBN: String
     pub_Date: String
