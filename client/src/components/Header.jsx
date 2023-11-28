@@ -29,16 +29,16 @@ function Header() {
         "./img/avators/owl.png"
     ];
     return (
-        <header className="flex flex-col justify-center h-screen w-3/12 bg-repeat" style={{ backgroundImage: `url("./img/NavBAckground6.png")` }}>
+        <header className="flex flex-col justify-center h-screen w-3/12 bg-repeat overflow-auto" style={{ backgroundImage: `url("./img/NavBAckground6.png")` }}>
             <div className="flex flex-col justify-top h-screen w-full rounded-full">
                 <img className="w-52 m-5 rounded-md self-center shadow-2xl shadow-black" src='./img/logo.png' alt="TechLogoImg" />
-                <div className="rounded-full self-center mb-8 bg-[#00214f] border-4 border-white border-solid shadow-black shadow-xl outline outline-4 outline-white outline-offset-4">
+                <div className="rounded-full self-center mb-8 bg-[#00214f] border-4 border-amber-600 border-solid shadow-black shadow-xl outline outline-4 outline-amber-600 outline-offset-4">
                 <img id="display_image" className="h-32 w-32 rounded-full bg-black" src={selectedAvatar || "./path/to/default-avatar.jpeg"} alt="Selected Avatar" />
             </div>
             <button id="openModal" className="bg-blue-800 self-center rounded-md h-8 w-28 text-white shadow-black shadow-md" onClick={openModal}>My Avatar</button>
 
             {isModalOpen && (
-                <div id="avatarModal" className="modal">
+                <div id="avatarModal" className="modal" style={{ display: isModalOpen ? 'block' : 'none' }}>
                     <div className="modal-content">
                         <span className="close" onClick={closeModal}>&times;</span>
                         <div id="avatar-gallery">
@@ -59,7 +59,7 @@ function Header() {
             <nav className="flex flex-col content-center h-3/4 w-full max-h-fit">
                 {/* Update buttons to use React's onClick for navigation */}
                 <button onClick={() => window.location.href = '/'} className="bg-sky-500 w-4/5 h-14 m-4 self-center shadow-white shadow-inner rounded-lg text-3xl font-serif antialiased hover:bg-[#f4edd6] outline outline-4 outline-sky-600 outline-offset-4 hover:outline-[#f4edd6]">Home</button>
-                <button onClick={() => window.location.href = '/Mylist'} className="bg-sky-500 w-4/5 h-14 m-4 self-center shadow-white shadow-inner rounded-lg text-3xl font-serif antialiased hover:bg-[#f4edd6] outline outline-4 outline-sky-600 outline-offset-4 hover:outline-[#f4edd6]">MyList</button>
+                <button onClick={() => window.location.href = '/Mylist'} className="bg-sky-500 w-4/5 h-14 m-4 self-center shadow-white shadow-inner rounded-lg text-3xl font-serif antialiased hover:bg-[#f4edd6] outline outline-4 outline-sky-600 outline-offset-4 hover:outline-[#f4edd6]">My Lists</button>
                 <button onClick={() => window.location.href = '/login'} className="bg-sky-500 w-4/5 h-14 m-4 self-center shadow-white shadow-inner rounded-lg text-3xl font-serif antialiased hover:bg-[#f4edd6] outline outline-4 outline-sky-600 outline-offset-4 hover:outline-[#f4edd6]">Login</button>
                 <button onClick={() => window.location.href = '/logout'} className="bg-sky-500 w-4/5 h-14 m-4 self-center shadow-white shadow-inner rounded-lg text-3xl font-serif antialiased hover:bg-[#f4edd6] outline outline-4 outline-sky-600 outline-offset-4 hover:outline-[#f4edd6]">Logout</button>
             </nav>
