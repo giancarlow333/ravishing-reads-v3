@@ -24,13 +24,13 @@ const noteSchema = new mongoose.Schema({
 
 // The bookSchema defines the schema of the parent document
 const bookSchema = new mongoose.Schema({
-  title: { type: String, trim: true, required: true },
+  _id: { type: Schema.Types.ObjectId, default: () => new Types.ObjectId()},
   author: { type: String, trim: true, required: true },
   ISBN: { type: String, trim: true },
   pub_Date: { type: Date, trim: true },
   title: { type: String, trim: true },
   description: { type: String, trim: true },
-  page_Count: { type: String, trim: true },
+  page_Count: { type: Number , trim: true },
   img_Link: {type: String, trim: true},
   link: {type: String, trim: true},
   // This will include an array that holds all the notes
@@ -39,7 +39,7 @@ const bookSchema = new mongoose.Schema({
 });
 
 // Uses mongoose.model() to create model
-const Books = mongoose.model("Books", bookSchema);
+const Book = mongoose.model("Books", bookSchema);
 
 // Uses model to create new instance including subdocument
 const noteData = [
@@ -48,8 +48,8 @@ const noteData = [
   { title: "History of Hogwarts", price: 5 },
 ];
 
-Books.create({ name: "Notes", notes: noteData })
+Book.create({ name: "Notes", notes: noteData })
   .then((data) => console.log(data))
   .catch((err) => console.log(err));
 
-module.exports = Books;
+module.exports = Book;
