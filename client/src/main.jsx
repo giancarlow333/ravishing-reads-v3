@@ -7,7 +7,7 @@ import './index.css';
 import App from './App';
 import Error from './pages/Error';
 import Home from './pages/home.jsx'; //booksearch page 
-import Bookdetails from './pages/Bookdetails.jsx';
+import BookDetails from './pages/BookDetails.jsx';
 import Login from './pages/Login.jsx';
 import Signup from './pages/Signup.jsx';
 import Mylist from './pages/Mylist.jsx';
@@ -25,7 +25,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/Bookdetails',
-        element: <Bookdetails />,
+        element: <BookDetails />,
       },
       {
         path: '/Login',
