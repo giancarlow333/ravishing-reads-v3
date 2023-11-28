@@ -1,10 +1,10 @@
-const mongoose = require("mongoose");
+const  { Schema, model }  = require("mongoose");
 const dateFormat = require("../utils/dateFormat");
 const Profile = require("./Profile");
 
 // Child documents or subdocuments can be embedded into a parent document
 // The noteSchema defines the schema of the subdocument
-const noteSchema = new mongoose.Schema({
+const noteSchema = new Schema({
   noteId: {
     type: Schema.Types.ObjectId,
     default: () => new Types.ObjectId(),
@@ -23,7 +23,7 @@ const noteSchema = new mongoose.Schema({
 });
 
 // The bookSchema defines the schema of the parent document
-const bookSchema = new mongoose.Schema({
+const bookSchema = new Schema({
   title: { type: String, trim: true, required: true },
   author: { type: String, trim: true, required: true },
   ISBN: { type: String, trim: true },
@@ -39,7 +39,7 @@ const bookSchema = new mongoose.Schema({
 });
 
 // Uses mongoose.model() to create model
-const Books = mongoose.model("Books", bookSchema);
+const Books = model("Books", bookSchema);
 
 // Uses model to create new instance including subdocument
 const noteData = [

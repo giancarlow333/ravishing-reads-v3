@@ -7,7 +7,7 @@ const profileSchema = new Schema({
     type: Schema.Types.ObjectId,
     default: () => new Types.ObjectId(),
   },
-  user: {
+  name: {
     type: String,
     required: true,
     unique: true,
@@ -24,24 +24,24 @@ const profileSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  Already_Read: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Book",
-    },
-  ],
-  To_Reads: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Book",
-    },
-  ],
-  Wishlist: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Book",
-    },
-  ],
+  // Already_Read: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: "Book",
+  //   },
+  // ],
+  // To_Reads: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: "Book",
+  //   },
+  // ],
+  // Wishlist: [
+  //   {
+  //     type: Schema.Types.ObjectId,
+  //     ref: "Book",
+  //   },
+  // ],
 },
 { toJSON: {
     virtuals: true}});

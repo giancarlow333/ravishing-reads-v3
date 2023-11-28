@@ -1,6 +1,10 @@
 
 //import decorImg from './public/img/victoriandecor-removebg-preview.png';
 import Header from '../components/Header';
+import { useMutation } from '@apollo/client';
+
+import { ADD_PROFILE } from '../utils/mutations';
+import { QUERY_SINGLE_PROFILE } from '../utils/queries';
 
 function Login() {
     return (
@@ -8,7 +12,7 @@ function Login() {
         <Header />   
         <div className="flex flex-col justify-center items-center self-center h-full w-9/12 bg-[#001829]">
             <div className="flex justify-evenly items-center flex-col w-4/6 h-4/6 bg-[#f8f2e5] rounded-lg outline outline-8 outline-[#f7f8f6] outline-offset-4">
-                <form id="auth-form" action="{{actionRoute}}" method="post" className="w-full h-full flex flex-col justify-around items-center" autoComplete="off">
+                <form id="auth-form" action="Home" method="post" className="w-full h-full flex flex-col justify-around items-center" autoComplete="off">
                     <img className="h-24 self-center m-5" src='./img/ornament.png' alt="TechChat Logo" />
                     <p className="text-5xl text-[#001829] font-serif m-5 antialiased font-bold self-center">Welcome Back!</p>
 
