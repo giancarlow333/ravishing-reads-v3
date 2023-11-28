@@ -1,7 +1,7 @@
 const typeDefs = `
   type Profile {
     _id: ID
-    userId: Number
+    userId: Int
     username: String
     email: String
     # There is now a field to store the user's password
@@ -16,7 +16,7 @@ const typeDefs = `
     noteID: ID
     noteText: String
     createdAt: String
-    rating: Number
+    rating: Int
   }
 
   type Book {
@@ -25,9 +25,8 @@ const typeDefs = `
     author: String
     ISBN: String
     pub_Date: String
-    title: String
     description: String
-    page_Count: Number
+    page_Count: Int
     img_Link: String
     link: String
     notes: [Note]!
