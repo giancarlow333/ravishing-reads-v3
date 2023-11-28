@@ -17,6 +17,7 @@ export const QUERY_PROFILES = gql`
         page_Count
         img_Link
         link
+        last_Accessed
         notes {
           noteId
           createdAt
@@ -35,6 +36,7 @@ export const QUERY_PROFILES = gql`
         page_Count
         img_Link
         link
+        last_Accessed
         notes {
           noteId
           createdAt
@@ -52,6 +54,7 @@ export const QUERY_PROFILES = gql`
         page_Count
         img_Link
         link
+        last_Accessed
         notes {
           noteId
           createdAt
@@ -80,6 +83,7 @@ export const QUERY_SINGLE_PROFILES = gql`
         page_Count
         img_Link
         link
+        last_Accessed
         notes {
           noteId
           createdAt
@@ -98,6 +102,7 @@ export const QUERY_SINGLE_PROFILES = gql`
         page_Count
         img_Link
         link
+        last_Accessed
         notes {
           noteId
           createdAt
@@ -115,6 +120,7 @@ export const QUERY_SINGLE_PROFILES = gql`
         page_Count
         img_Link
         link
+        last_Accessed
         notes {
           noteId
           createdAt
@@ -138,6 +144,7 @@ export const QUERY_BOOKS = gql`
         page_Count
         img_Link
         link
+        last_Accessed
         notes {
           noteId
           createdAt
@@ -161,6 +168,7 @@ query getSingleBook($bookId: ID!) {
         page_Count
         img_Link
         link
+        last_Accessed
         notes {
           noteId
           createdAt
