@@ -3,7 +3,7 @@ import Header from '../components/Header';
 
 function Mylist() {
     return (
-    <div className="flex flex-row h-screen w-screen ">    
+    <div className="flex flex-row h-screen w-screen overflow-auto">    
            <Header />
         <div className="flex flex-col justify-center items-center self-center h-full w-9/12 bg-[#001829]">
             <div className="flex justify-center items-center flex-col w-5/6 h-1/4">

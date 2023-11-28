@@ -1,7 +1,7 @@
 
 import Header from '../components/Header';
 
-function BookDetails() {
+function BookDetails(props) {
     return (
     <div className="flex flex-row h-screen w-screen overflow-auto">    
         <Header />   
