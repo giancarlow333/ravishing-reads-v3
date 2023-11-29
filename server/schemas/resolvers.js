@@ -24,9 +24,9 @@ const resolvers = {
       return Note.find();
     },
 
-    note: async (parent, { noteId }) => {
-      return Note.findOne({ noteId: noteId });
-    },
+    // note: async (parent, { noteId }) => {
+    //   return Note.findOne({ noteId: noteId });
+    // },
   },
 
 

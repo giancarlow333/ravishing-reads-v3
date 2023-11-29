@@ -25,9 +25,9 @@ const profileSchema = new Schema({
     minlength: 5,
   },
   Lists: [
-    {Already_Read: [Book]},
-    {To_Reads: [Book]},
-    {Wishist: [Book]},],
+    {Already_Read: [Book.schema]},
+    {To_Reads: [Book.schema]},
+    {Wishist: [Book.schema]},],
 },
 { toJSON: {
     virtuals: true}});

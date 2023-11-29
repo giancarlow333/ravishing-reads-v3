@@ -1,14 +1,10 @@
 const typeDefs = `
   type Profile {
-    userId: ID
+    _id: ID
+    userId: Int
     username: String
     email: String
     password: String
-    Lists:[
-      Already_Read: [Book]!,
-      To_Reads: [Book]!
-      Wishlist: [Book]!
-    ]
   }
 
   type Note {
@@ -21,10 +17,10 @@ const typeDefs = `
   
   type Book {
     _id: ID
+    title: String
     author: String
     ISBN: String
-    pub_Date: Date
-    title: String
+    pub_Date: String
     description: String
     page_Count: Int
     img_Link: String
@@ -39,16 +35,13 @@ const typeDefs = `
     books:[Book]!
     book(_Id: ID!): Book
     notes:[Note]!
-    book(noteId: ID!): Note
   }
 
 type Mutation {
     addProfile(usernamename: String!, email: String!, password: String!): Profile
-    addBook(title: String!, author: String!, ISBN: String!, title: String!, description: String!, page_Count: Number!, img_Link: String!, link: String!): Book
+    addBook(title: String!, author: String!, ISBN: String!, description: String!, page_Count: Int!, img_Link: String!, link: String!): Book
     addToList(userId: ID!, List: [Book]!, title:String!): Profile
     addNote(_Id: ID!, noteText: String!): Book
-
-    login(email: String!, password: String!): Auth
     
     deleteProfile(userId: ID!): Profile
     removeBook(userId: ID!, _id: ID!): Book

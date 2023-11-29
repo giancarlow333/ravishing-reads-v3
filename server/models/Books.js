@@ -23,7 +23,7 @@ const noteSchema = new Schema({
 });
 
 // The bookSchema defines the schema of the parent document
-const bookSchema = new mongoose.Schema({
+const bookSchema = new Schema({
   _id: { type: Schema.Types.ObjectId, default: () => new Types.ObjectId()},
   author: { type: String, trim: true, required: true },
   ISBN: { type: String, trim: true },
@@ -39,7 +39,7 @@ const bookSchema = new mongoose.Schema({
 });
 
 // Uses mongoose.model() to create model
-const Book = mongoose.model("Books", bookSchema);
+const Book = model("Books", bookSchema);
 
 // Uses model to create new instance including subdocument
 const noteData = [

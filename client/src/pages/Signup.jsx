@@ -2,8 +2,8 @@ import { useState } from 'react';
 import Header from '../components/Header';
 import { useMutation } from '@apollo/client';
 
-import { ADD_PROFILE } from '../utils/mutations';
-import { QUERY_SINGLE_PROFILE } from '../utils/queries';
+//import { ADD_PROFILE } from '../utils/mutations';
+//import { QUERY_SINGLE_PROFILE } from '../utils/queries';
 
 function Signup() {
 
