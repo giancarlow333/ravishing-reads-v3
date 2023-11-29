@@ -3,16 +3,17 @@ import { gql } from '@apollo/client';
 export const ADD_PROFILE = gql`
   mutation addProfile($user: String!, $email: String!, $password: String!) {
     addProfile(user: $user, email:$email, password:$password) {
-      userId
+      _id
       user
       email
       password
       Lists{
         Already_Read {
-          bookId
+          _id
           title
           author
           ISBN
+          publisher
           pub_Date
           description
           page_Count
@@ -20,7 +21,7 @@ export const ADD_PROFILE = gql`
           link
           last_Accessed
           notes {
-            noteId
+            _id
             createdAt
             userId
             noteText
@@ -28,10 +29,11 @@ export const ADD_PROFILE = gql`
           }
         }
         To_Reads {
-          bookId
+          _id
           title
           author
           ISBN
+          publisher
           pub_Date
           description
           page_Count
@@ -39,17 +41,18 @@ export const ADD_PROFILE = gql`
           link
           last_Accessed
           notes {
-            noteId
+            _id
             createdAt
             userId
             noteText
             rating
         }
         Wishlist {
-          bookId
+          _id
           title
           author
           ISBN
+          publisher
           pub_Date
           description
           page_Count
@@ -57,7 +60,7 @@ export const ADD_PROFILE = gql`
           link
           last_Accessed
           notes {
-            noteId
+            _id
             createdAt
             userId
             noteText
@@ -69,11 +72,11 @@ export const ADD_PROFILE = gql`
 `;
 
 export const ADD_BOOK = gql`
-  mutation addBook($author: String!, $ISBN: String!, $pub_Date: Date!, $title: String!, $title: String!, 
-    $description: String!, $page_Count: Int!, $img_Link: String!, $link: String!) {
+  mutation addBook($author: String!, $ISBN: String!, $pub_Date: String!, $title: String!, $title: String!, 
+    $description: String!, $publisher: String!, $page_Count: Int!, $img_Link: String!, $link: String!) {
     addBook(author: $author, ISBN: $ISBN, pub_Date: $pub_Date, title: $title,
-      description: $description, page_Count: $page_Count, img_Link: $img_Link, link: $link) {
-        bookId
+      description: $description, publisher: $publisher, page_Count: $page_Count, img_Link: $img_Link, link: $link) {
+        _id
         title
         author
         ISBN
@@ -84,7 +87,7 @@ export const ADD_BOOK = gql`
         link
         last_Accessed
         notes {
-          noteId
+          _id
           createdAt
           userId
           noteText
@@ -95,9 +98,9 @@ export const ADD_BOOK = gql`
 `;
 
 export const ADD_NOTE = gql`
-  mutation addNote($bookId: ID!, $noteText: String!, $rating: Int!) {
-    addNote(bookId: $bookId, noteText: $noteText, rating: $rating) {
-      bookId
+  mutation addNote($_id: ID!, $noteText: String!, $rating: Int!) {
+    addNote(_id: $_id, noteText: $noteText, rating: $rating) {
+      _id
       title
       author
       ISBN
@@ -108,7 +111,7 @@ export const ADD_NOTE = gql`
       link
       last_Accessed
       notes {
-        noteId
+        _id
         createdAt
         userId
         noteText
@@ -118,10 +121,10 @@ export const ADD_NOTE = gql`
   }
 `;
 
-export const ADD_TO_LIST = gpl`
-mutation addToList($user_Id: ID!, $Lists: String!, $title: String!,
+export const ADD_TO_LIST = gql`
+mutation addToAlreadyRead($_id: ID!, $Lists: String!, $title: String!,
   $Already_Read: [Book]!, $To_Reads: [Book]!, $Wishlist: [Book]!){
-  addToList(user_id: $user_Id, Lists: $Lists, title:$title, Already_Read: $Already_Read,
+  addToAlreadyRead(_id: $_id, Lists: $Lists, title:$title, Already_Read: $Already_Read,
     To_Reads: $To_Reads, Wishlist: $Wishlist){
     username
     Lists
@@ -132,29 +135,30 @@ mutation addToList($user_Id: ID!, $Lists: String!, $title: String!,
 
 
 
-export const DELETE_PROFILE = gpl`
-mutation deleteProfile($user_Id: ID!){
-  deleteProfile(user_Id: $user_Id){
+export const DELETE_PROFILE = gql`
+mutation deleteProfile($_id: ID!){
+  deleteProfile(_id: $_id){
     user
     email
   }
 }
 `;
 
-export const REMOVE_BOOK = gpl`
-mutation removeBook($user_Id: ID!, $_id: ID!){
-  removeBook(user_Id: $user_Id, _id: $_id){
+export const REMOVE_BOOK = gql`
+mutation removeBook($_id: ID!, $_id: ID!){
+  removeBook(_id: $_id, _id: $_id){
     user
     email
   }
 }
 `;
 
-export const REMOVE_NOTE = gpl`
-mutation removeNote($_id: ID!, $noteId: ID!){
-  removeNote(_id: $_id, noteId: $noteId){
+export const REMOVE_NOTE = gql`
+mutation removeNote($_id: ID!, $_id: ID!){
+  removeNote(_id: $_id, _id: $_id){
     title
-    noteId
+    _id
+    noteText
   }
 }
 `;
