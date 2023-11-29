@@ -3,10 +3,10 @@ const bcrypt = require("bcrypt");
 const Book = require('./Books');
 
 const profileSchema = new Schema({
-  userId: {
+  /* userId: {
     type: Schema.Types.ObjectId,
     default: () => new Types.ObjectId(),
-  },
+  },*/
   user: {
     type: String,
     required: true,
