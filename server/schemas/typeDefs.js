@@ -22,9 +22,9 @@ const typeDefs = `
     _id: ID
     author: String
     ISBN: String
-    pub_Date: Date
-    title: Spublisher: Stringtring
-    
+    pub_Date: String
+    publisher: String
+    title: String
     description: String
     page_Count: Int
     img_Link: String
@@ -44,7 +44,7 @@ const typeDefs = `
 
 type Mutation {
     addProfile(usernamename: String!, email: String!, password: String!): Profile
-    addBook(title: String!, author: String!, ISBN: String!, publisher: String!, title: String!, description: String!, page_Count: Int!, img_Link: String!, link: String!): Book
+    addBook(title: String!, author: String!, ISBN: String!, publisher: String!, title: String!, pub_Date: String!, description: String!, page_Count: Int!, img_Link: String!, link: String!): Book
     addToAlreadyRead(_id: ID!, Already_Read: [Book]!, title:String!): Profile
     addNote(_id: ID!, noteText: String!, rating: Int!): Book
 
