@@ -72,7 +72,7 @@ export const ADD_PROFILE = gql`
 `;
 
 export const ADD_BOOK = gql`
-  mutation addBook($author: String!, $ISBN: String!, $pub_Date: Date!, $title: String!, $title: String!, 
+  mutation addBook($author: String!, $ISBN: String!, $pub_Date: String!, $title: String!, $title: String!, 
     $description: String!, $publisher: String!, $page_Count: Int!, $img_Link: String!, $link: String!) {
     addBook(author: $author, ISBN: $ISBN, pub_Date: $pub_Date, title: $title,
       description: $description, publisher: $publisher, page_Count: $page_Count, img_Link: $img_Link, link: $link) {
