@@ -5,6 +5,10 @@ const Profile = require("./Profile");
 // Child documents or subdocuments can be embedded into a parent document
 // The noteSchema defines the schema of the subdocument
 const noteSchema = new mongoose.Schema({
+   /*userId: { REMOVED BY GW FOR TESTING
+    type: Schema.Types.ObjectId,
+    ref: "Profile.userID",
+  },*/
   createdAt: {
     type: Date,
     default: Date.now,
