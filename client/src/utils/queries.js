@@ -7,60 +7,62 @@ export const QUERY_PROFILES = gql`
       user
       email
       password
-      Already_Read {
-        bookId
-        title
-        author
-        ISBN
-        pub_Date
-        description
-        page_Count
-        img_Link
-        link
-        last_Accessed
-        notes {
-          noteId
-          createdAt
-          userId
-          noteText
-          rating
+      Lists{
+        Already_Read {
+          bookId
+          title
+          author
+          ISBN
+          pub_Date
+          description
+          page_Count
+          img_Link
+          link
+          last_Accessed
+          notes {
+            noteId
+            createdAt
+            userId
+            noteText
+            rating
+          }
         }
-      }
-      To_Reads {
-        bookId
-        title
-        author
-        ISBN
-        pub_Date
-        description
-        page_Count
-        img_Link
-        link
-        last_Accessed
-        notes {
-          noteId
-          createdAt
-          userId
-          noteText
-          rating
-      }
-      Wishlist {
-        bookId
-        title
-        author
-        ISBN
-        pub_Date
-        description
-        page_Count
-        img_Link
-        link
-        last_Accessed
-        notes {
-          noteId
-          createdAt
-          userId
-          noteText
-          rating
+        To_Reads {
+          bookId
+          title
+          author
+          ISBN
+          pub_Date
+          description
+          page_Count
+          img_Link
+          link
+          last_Accessed
+          notes {
+            noteId
+            createdAt
+            userId
+            noteText
+            rating
+        }
+        Wishlist {
+          bookId
+          title
+          author
+          ISBN
+          pub_Date
+          description
+          page_Count
+          img_Link
+          link
+          last_Accessed
+          notes {
+            noteId
+            createdAt
+            userId
+            noteText
+            rating
+        }
       }
     }
   }
@@ -69,68 +71,71 @@ export const QUERY_PROFILES = gql`
 export const QUERY_SINGLE_PROFILES = gql`
   query getSingleProfile($userId: ID!) {
     profile (userId: $userId) {
-      userId
-      user
-      email
-      password
-      Already_Read {
-        bookId
-        title
-        author
-        ISBN
-        pub_Date
-        description
-        page_Count
-        img_Link
-        link
-        last_Accessed
-        notes {
-          noteId
-          createdAt
-          userId
-          noteText
-          rating
+      profiles {
+        userId
+        user
+        email
+        password
+        Lists{
+          Already_Read {
+            bookId
+            title
+            author
+            ISBN
+            pub_Date
+            description
+            page_Count
+            img_Link
+            link
+            last_Accessed
+            notes {
+              noteId
+              createdAt
+              userId
+              noteText
+              rating
+            }
+          }
+          To_Reads {
+            bookId
+            title
+            author
+            ISBN
+            pub_Date
+            description
+            page_Count
+            img_Link
+            link
+            last_Accessed
+            notes {
+              noteId
+              createdAt
+              userId
+              noteText
+              rating
+          }
+          Wishlist {
+            bookId
+            title
+            author
+            ISBN
+            pub_Date
+            description
+            page_Count
+            img_Link
+            link
+            last_Accessed
+            notes {
+              noteId
+              createdAt
+              userId
+              noteText
+              rating
+          }
         }
       }
-      To_Reads {
-        bookId
-        title
-        author
-        ISBN
-        pub_Date
-        description
-        page_Count
-        img_Link
-        link
-        last_Accessed
-        notes {
-          noteId
-          createdAt
-          userId
-          noteText
-          rating
-      }
-      Wishlist {
-        bookId
-        title
-        author
-        ISBN
-        pub_Date
-        description
-        page_Count
-        img_Link
-        link
-        last_Accessed
-        notes {
-          noteId
-          createdAt
-          userId
-          noteText
-          rating
-      }
     }
-  }
-`;
+  `;
 
 export const QUERY_BOOKS = gql`
   query getBooks {
