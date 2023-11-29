@@ -39,8 +39,4 @@ const bookSchema = new mongoose.Schema({
 const Books = mongoose.model("Books", bookSchema);
 
 
-Books.create({ name: "Notes", notes: bookData })
-  .then((data) => console.log(data))
-  .catch((err) => console.log(err));
-
 module.exports = Books;
