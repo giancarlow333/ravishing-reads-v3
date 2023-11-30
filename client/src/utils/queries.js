@@ -161,11 +161,11 @@ export const QUERY_BOOKS = gql`
       page_Count
       img_Link
       link
-      last_Accessed
+      lastAccessed
       notes {
         _id
         createdAt
-        userId
+        # userId
         noteText
         rating
       }
@@ -186,11 +186,11 @@ export const QUERY_SINGLE_BOOK = gql`
       page_Count
       img_Link
       link
-      last_Accessed
+      lastAccessed
       notes {
         _id
         createdAt
-        userId
+        # userId
         noteText
         rating
       }
