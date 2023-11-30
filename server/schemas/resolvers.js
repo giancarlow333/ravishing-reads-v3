@@ -1,6 +1,7 @@
 const { Profile } = require('../models');
 const { Books } = require('../models');
 const { Note } = require('../models');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
@@ -31,8 +32,32 @@ const resolvers = {
 
 
   Mutation: {
-    addProfile: async (parent, { user, email, password }) => {
-      return Profile.create({ user, email, password });
+    addProfile: async (parent, { username, email, password }) => {
+      const profile = await Profile.create({ username, email, password });
+      const token = signToken(profile);
+
+      return { token, profile };
+    },
+    login: async (parent, { username, password }) => {
+      const profile = await Profile.findOne({ username });
+      let token = null;
+
+      if (!profile) {
+        return { token, profile };
+        // we should be sending an error for incorrect credentials
+        //throw new AuthenticationError('Incorrect credentials');
+      }
+
+      const correctPassword = await profile.isCorrectPassword(password);
+
+      if (!correctPassword) {
+        return { token, profile };
+        // we should be sending an error for incorrect credentials
+        //throw new AuthenticationError('Incorrect credentials');
+      }
+
+      token = signToken(profile);
+      return { token, profile };
     },
     addBook: async (parent, { author, ISBN, title, description, pub_Date, publisher, page_Count, img_Link, link }) => {
       return Profile.create({ author, ISBN, title, description, pub_Date, publisher, page_Count, img_Link, link });
@@ -103,6 +128,7 @@ const resolvers = {
         { new: true }
       );
     },
+
   },
 };
 

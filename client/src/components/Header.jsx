@@ -2,10 +2,13 @@
 
 import React, { useState, useEffect } from 'react';
 import '../index.css';
+import Auth from '../utils/auth';
+
 
 function Header() {
     const [isModalOpen, setModalOpen] = useState(false);
     const [selectedAvatar, setSelectedAvatar] = useState('');
+    const [hasLoggedOut, SetLogout] = useState(false);
 
     useEffect(() => {
         const savedAvatarSrc = localStorage.getItem("selectedAvatarSrc");
@@ -30,6 +33,18 @@ function Header() {
         "./img/avators/fox.jpeg",
         "./img/avators/owl.png"
     ];
+
+
+    const logout = async (event) => {
+        event.preventDefault();
+        Auth.logout()
+        setLoggedIn(true)
+    }
+
+    if(hasLoggedOut)
+    return <Navigate to="/" />
+  else
+
     return (
         <header className="flex flex-col justify-center h-screen w-3/12 bg-repeat overflow-auto" style={{ backgroundImage: `url("./img/NavBAckground6.png")` }}>
             <div className="flex flex-col justify-top h-screen w-full rounded-full">
@@ -63,7 +78,7 @@ function Header() {
                 <button onClick={() => window.location.href = '/'} className="bg-sky-500 w-4/5 h-14 m-4 self-center shadow-white shadow-inner rounded-lg text-3xl font-serif antialiased hover:bg-[#f4edd6] outline outline-4 outline-sky-600 outline-offset-4 hover:outline-[#f4edd6]">Home</button>
                 <button onClick={() => window.location.href = '/Mylist'} className="bg-sky-500 w-4/5 h-14 m-4 self-center shadow-white shadow-inner rounded-lg text-3xl font-serif antialiased hover:bg-[#f4edd6] outline outline-4 outline-sky-600 outline-offset-4 hover:outline-[#f4edd6]">My Lists</button>
                 <button onClick={() => window.location.href = '/login'} className="bg-sky-500 w-4/5 h-14 m-4 self-center shadow-white shadow-inner rounded-lg text-3xl font-serif antialiased hover:bg-[#f4edd6] outline outline-4 outline-sky-600 outline-offset-4 hover:outline-[#f4edd6]">Login</button>
-                <button onClick={() => window.location.href = '/logout'} className="bg-sky-500 w-4/5 h-14 m-4 self-center shadow-white shadow-inner rounded-lg text-3xl font-serif antialiased hover:bg-[#f4edd6] outline outline-4 outline-sky-600 outline-offset-4 hover:outline-[#f4edd6]">Logout</button>
+                <button onClick={logout} className="bg-sky-500 w-4/5 h-14 m-4 self-center shadow-white shadow-inner rounded-lg text-3xl font-serif antialiased hover:bg-[#f4edd6] outline outline-4 outline-sky-600 outline-offset-4 hover:outline-[#f4edd6]">Logout</button>
             </nav>
         </header>
     );
