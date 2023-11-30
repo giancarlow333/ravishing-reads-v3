@@ -14,6 +14,7 @@ const typeDefs = `
     noteText: String
     createdAt: String
     rating: Int
+    user: Profile!
   }
 
   
@@ -47,7 +48,7 @@ type Mutation {
     addToAlreadyRead(bookId: ID!, title:String!): Profile
     addToWishlist(bookId: ID!, title:String!): Profile
     addTo_ToReads(bookId: ID!, title:String!): Profile
-    addNote(noteId: ID!, noteText: String!, rating: Int!): Book
+    addNote(noteId: ID!, noteText: String!, rating: Int!, user: Profile): Book
 
     # login(email: String!, password: String!): Auth
     
