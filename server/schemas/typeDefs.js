@@ -4,9 +4,14 @@ const typeDefs = `
     username: String
     email: String
     password: String
-    Already_Read:[Book]!,
+    Already_Read:[Book]!
     To_Reads: [Book]!
     Wishlist: [Book]!
+  }
+
+  type Auth {
+    token: ID
+    profile: Profile
   }
 
   type Note {
@@ -16,15 +21,14 @@ const typeDefs = `
     rating: Int
     user: Profile!
   }
-
   
   type Book {
     _id: ID
+    title: String
     author: String
     ISBN: String
     pub_Date: String
     publisher: String
-    title: String
     description: String
     page_Count: Int
     img_Link: String
@@ -45,14 +49,14 @@ const typeDefs = `
   }
 
 type Mutation {
-    addProfile(usernamename: String!, email: String!, password: String!): Profile
+    addProfile(username: String!, email: String!, password: String!): Auth
     addBook(title: String!, author: String!, ISBN: String!, publisher: String!, pub_Date: String!, description: String!, page_Count: Int!, img_Link: String!, link: String!): Book
     addToAlreadyRead(profileId: ID!, bookID: ID!): Profile
     addToWishlist(bprofileId: ID!, bookID: ID!): Profile
     addTo_ToReads(profileId: ID!, bookID: ID!): Profile
     addNote(bookId: ID!, noteText: String!, rating: Int!, user: Profile): Book
 
-    # login(email: String!, password: String!): Auth
+    login(username: String!, password: String!): Auth
     
     deleteProfile(profileId: ID!): Profile
     removeBook(bookId: ID!): Book
