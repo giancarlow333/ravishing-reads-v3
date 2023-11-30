@@ -4,70 +4,10 @@ import { gql } from '@apollo/client';
 export const ADD_PROFILE = gql`
   mutation addProfile($username: String!, $email: String!, $password: String!) {
     addProfile(username: $username, email: $email, password:$password) {
-      token
-      profileId
+      _id
       username
       email
       password
-      Lists{
-        Already_Read {
-          _id
-          title
-          author
-          ISBN
-          publisher
-          pub_Date
-          description
-          page_Count
-          img_Link
-          link
-          lastAccessed
-          notes {
-            _id
-            createdAt
-            noteText
-            rating
-          }
-        }
-        To_Reads {
-          _id
-          title
-          author
-          ISBN
-          publisher
-          pub_Date
-          description
-          page_Count
-          img_Link
-          link
-          lastAccessed
-          notes {
-            _id
-            createdAt
-            noteText
-            rating
-          }
-        }
-        Wishlist {
-          _id
-          title
-          author
-          ISBN
-          publisher
-          pub_Date
-          description
-          page_Count
-          img_Link
-          link
-          lastAccessed
-          notes {
-            _id
-            createdAt
-            noteText
-            rating
-        }
-      }
-    }
     }
   }
 `;
