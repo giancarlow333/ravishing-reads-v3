@@ -1,22 +1,7 @@
-import { useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
+
 import Header from '../components/Header';
 
-import { QUERY_BOOKS } from '../utils/queries';
-
-function Book() {
-    // Use `useParams()` to retrieve value of the route parameter `:bookId`
-    const { bookId } = useParams();
-    const { loading, data } = useQuery(QUERY_BOOKS, {
-        // pass URL parameter
-        variables: { bookId: bookId },
-    });
-    
-    const book = data?.book || {};
-    if (loading) {
-        return <div>Loading...</div>;
-    }
-    
+ function Book() {
   return (
     <div className="flex flex-row h-screen w-screen overflow-auto">    
         <Header />   
