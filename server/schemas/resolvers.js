@@ -1,6 +1,7 @@
 const { Profile } = require('../models');
 const { Books } = require('../models');
 const { Note } = require('../models');
+const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
@@ -31,8 +32,27 @@ const resolvers = {
 
 
   Mutation: {
-    addProfile: async (parent, { user, email, password }) => {
-      return Profile.create({ user, email, password });
+    addProfile: async (parent, { username, email, password }) => {
+      const profile = await Profile.create({ username, email, password });
+      const token = signToken(profile);
+
+      return { token, profile };
+    },
+    login: async (parent, { username, password }) => {
+      const profile = await Profile.findOne({ username });
+
+      if (!profile) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+
+      const correctPassword = await profile.isCorrectPassword(password);
+
+      if (!correctPassword) {
+        throw new AuthenticationError('Incorrect credentials');
+      }
+
+      const token = signToken(profile);
+      return { token, profile };
     },
     addBook: async (parent, { author, ISBN, title, description, pub_Date, publisher, page_Count, img_Link, link }) => {
       return Profile.create({ author, ISBN, title, description, pub_Date, publisher, page_Count, img_Link, link });
@@ -49,36 +69,37 @@ const resolvers = {
         }
       );
     },
-    addToAlreadyRead: async (parent, { _id, title}) => {
-      return Profile.findOneAndUpdate(
-        { _id: _id},
-        {
-          $addToSet: { Already_Read: {title:title}},
-        },
-        {
-          new: true,
-          runValidators: true,
-        }
-      );
-    },
+    // addToAlreadyRead: async (parent, { _id, book}) => {
+    //   return Profile.findOneAndUpdate(
+    //     { _id: _id},
+    //     {
+    //       $addToSet: { Already_Read: {book:book}},
+    //     },
+    //     {
+    //       new: true,
+    //       runValidators: true,
+    //     }
+    //   );
+    // },
     deleteProfile: async (parent, { _id }) => {
       return Profile.findOneAndDelete({ _id: _id },
         { new: true });
     },
-    removeBook: async (parent, { _id, title }) => {
+    removeBook: async (parent, { _id }) => {
       return Profile.findOneAndUpdate(
         { _id: _id },
-        { $pull: { title: title } },
+        // { $pull: { title: title } },
         { new: true }
       );
     },
-    removeNote: async (parent, { _id, _id }) => {
+    removeNote: async (parent, { _id }) => {
       return Books.findOneAndUpdate(
         { _id: _id },
         { $pull: { _id: _id } },
         { new: true }
       );
     },
+
   },
 };
 
