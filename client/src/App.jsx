@@ -14,9 +14,7 @@ function App() {
   return (
     
     <ApolloProvider client={client}>
-        <div className="flex flex-row h-screen w-screen overflow-auto">
-         <Outlet />
-        </div>
+      <Outlet />
     </ApolloProvider>
   );
 }

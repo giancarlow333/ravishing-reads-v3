@@ -1,13 +1,9 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
-const Book = require('./Books');
+const Books = require('./Books');
 
 const profileSchema = new Schema({
-  userId: {
-    type: Schema.Types.ObjectId,
-    default: () => new Types.ObjectId(),
-  },
-  name: {
+  user: {
     type: String,
     required: true,
     unique: true,
@@ -24,10 +20,27 @@ const profileSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  Lists: [
-    {Already_Read: [Book.schema]},
-    {To_Reads: [Book.schema]},
-    {Wishist: [Book.schema]},],
+  Already_Read: 
+  [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Books'
+    }
+  ],
+  To_Reads: 
+  [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Books'
+    }
+  ],
+  Wishlist: 
+  [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Books'
+    }
+  ],
 },
 { toJSON: {
     virtuals: true}});

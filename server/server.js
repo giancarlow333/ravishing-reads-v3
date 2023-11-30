@@ -2,7 +2,7 @@ const express = require('express');
 const { ApolloServer } = require('@apollo/server');
 const { expressMiddleware } = require('@apollo/server/express4');
 const path = require('path');
-require('dotenv').config(); // REMOVE ON PRODUCTION
+//require('dotenv').config(); // REMOVE ON PRODUCTION
 
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
