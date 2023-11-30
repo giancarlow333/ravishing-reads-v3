@@ -85,7 +85,7 @@ export const ADD_BOOK = gql`
         page_Count
         img_Link
         link
-        last_Accessed
+        lastAccessed
         notes {
           _id
           createdAt

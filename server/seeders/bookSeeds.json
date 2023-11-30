@@ -8,6 +8,16 @@
     "page_Count": 104,
     "img_Link": "/img/avators/alice.jpg",
     "link": "String"
+  },
+  {
+    "title": "This is a Sample Book",
+    "author": "John Q. Doe",
+    "ISBN": "1234567890123",
+    "pub_Date": "2000-01-01T00:00:00.000+00:00",
+    "description": "This book is a sample.  It is not a real book in any way, so this description is pointless.",
+    "page_Count": 333,
+    "img_Link": "/img/avators/book1.jpeg",
+    "link": "null"
   }
 ]
   
