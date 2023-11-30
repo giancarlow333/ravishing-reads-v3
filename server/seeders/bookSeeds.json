@@ -6,8 +6,18 @@
     "pub_Date": "1865",
     "description": "Alice's Adventures in Wonderland (1865) is a novel written by English author Charles Lutwidge Dodgson under the pseudonym Lewis Carroll. It tells the story of a girl named Alice who falls down a rabbit-hole into a fantasy world populated by peculiar and anthropomorphic creatures.",
     "page_Count": 104,
-    "img_Link": "./img/avators/alice.jpg",
+    "img_Link": "/img/avators/alice.jpg",
     "link": "String"
+  },
+  {
+    "title": "This is a Sample Book",
+    "author": "John Q. Doe",
+    "ISBN": "1234567890123",
+    "pub_Date": "2000-01-01T00:00:00.000+00:00",
+    "description": "This book is a sample.  It is not a real book in any way, so this description is pointless.",
+    "page_Count": 333,
+    "img_Link": "/img/avators/book1.jpeg",
+    "link": "null"
   }
 ]
   
