@@ -8,24 +8,24 @@ const resolvers = {
       return Profile.find();
     },
 
-    profile: async (parent, { _id }) => {
-      return Profile.findOne({ _id: _id });
+    profile: async (parent, {profileId }) => {
+      return Profile.findOne({ _id: profileId });
     },
 
     books: async () => {
       return Books.find();
     },
 
-    book: async (parent, { _id }) => {
-      return Books.findOne({ _id: _id });
+    book: async (parent, { bookId }) => {
+      return Books.findOne({ _id: bookId });
     },
 
     notes: async () => {
       return Note.find();
     },
 
-    getBookNote: async (parent, { _id }) => {
-      return Note.findOne({ _id: _id });
+    getBookNote: async (parent, { noteId }) => {
+      return Note.findOne({ _id: noteId });
     },
   },
 
