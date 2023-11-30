@@ -49,9 +49,9 @@ const resolvers = {
         }
       );
     },
-    addToAlreadyRead: async (parent, { _id, title}) => {
+    addToAlreadyRead: async (parent, { profileId, title}) => {
       return Profile.findOneAndUpdate(
-        { _id: _id},
+        { _id: profileId},
         {
           $addToSet: { Already_Read: {title:title}},
         },
@@ -61,21 +61,21 @@ const resolvers = {
         }
       );
     },
-    deleteProfile: async (parent, { _id }) => {
-      return Profile.findOneAndDelete({ _id: _id },
+    deleteProfile: async (parent, { profileId }) => {
+      return Profile.findOneAndDelete({ _id: profileId },
         { new: true });
     },
-    removeBook: async (parent, { _id, title }) => {
+    removeBook: async (parent, { bookId, title }) => {
       return Profile.findOneAndUpdate(
-        { _id: _id },
+        { _id: bookId },
         { $pull: { title: title } },
         { new: true }
       );
     },
-    removeNote: async (parent, { _id, _id }) => {
+    removeNote: async (parent, { noteId }) => {
       return Books.findOneAndUpdate(
-        { _id: _id },
-        { $pull: { _id: _id } },
+        { _id: noteId },
+        { $pull: { _id: noteId } },
         { new: true }
       );
     },
