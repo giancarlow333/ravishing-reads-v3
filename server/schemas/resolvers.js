@@ -37,9 +37,9 @@ const resolvers = {
     addBook: async (parent, { author, ISBN, title, description, pub_Date, publisher, page_Count, img_Link, link }) => {
       return Profile.create({ author, ISBN, title, description, pub_Date, publisher, page_Count, img_Link, link });
     },
-    addNote: async (parent, { _id, noteText, rating }) => {
+    addNote: async (parent, { noteId, noteText, rating }) => {
       return Books.findOneAndUpdate(
-        { _id: _id },
+        { _id: noteId },
         {
           $addToSet: { noteText: noteText, rating: rating },
         },
@@ -53,7 +53,31 @@ const resolvers = {
       return Profile.findOneAndUpdate(
         { _id: profileId},
         {
-          $addToSet: { Already_Read: {_id:profileId}},
+          $addToSet: { Already_Read: {_id: profileId}},
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    },
+    addToWishlist: async (parent, { profileId, title}) => {
+      return Profile.findOneAndUpdate(
+        { _id: profileId},
+        {
+          $addToSet: { Wishlist: {_id: profileId}},
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    },
+    addTo_ToReads: async (parent, { profileId, title}) => {
+      return Profile.findOneAndUpdate(
+        { _id: profileId},
+        {
+          $addToSet: { To_Reads: {_id: profileId}},
         },
         {
           new: true,
