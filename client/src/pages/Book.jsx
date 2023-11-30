@@ -8,6 +8,7 @@ import { QUERY_BOOKS } from '../utils/queries';
 const Book = () => {
     const { loading, data } = useQuery(QUERY_BOOKS);
     const books = data?.books || [];
+    console.log(books);
     if (!books.length) {
         return <h3>No books Yet</h3>;
     }
