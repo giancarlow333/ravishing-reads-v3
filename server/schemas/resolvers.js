@@ -24,7 +24,7 @@ const resolvers = {
       return Note.find();
     },
 
-    note: async (parent, { _id }) => {
+    getBookNote: async (parent, { _id }) => {
       return Note.findOne({ _id: _id });
     },
   },
@@ -53,7 +53,7 @@ const resolvers = {
       return Profile.findOneAndUpdate(
         { _id: profileId},
         {
-          $addToSet: { Already_Read: {title:title}},
+          $addToSet: { Already_Read: {_id:profileId}},
         },
         {
           new: true,
