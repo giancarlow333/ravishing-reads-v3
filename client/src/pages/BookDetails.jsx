@@ -7,6 +7,7 @@ import { QUERY_SINGLE_BOOK } from '../utils/queries';
 const BookDetails = () => {
     // Use `useParams()` to retrieve value of the route parameter `:profileId`
     const { bookId } = useParams();
+    console.log(bookId);
 
     const { loading, data } = useQuery(QUERY_SINGLE_BOOK, {
       // pass URL parameter
@@ -14,7 +15,7 @@ const BookDetails = () => {
     });
   
     const book = data?.book || {};
-  
+    console.log(book);
     if (loading) {
       return <div>Loading...</div>;
     }
