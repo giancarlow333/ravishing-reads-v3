@@ -36,19 +36,21 @@ const typeDefs = `
   type Query {
     profiles: [Profile]!
     profile(profileId: ID!): Profile
-    books:[Book]!
+    books(profileId: ID!):[Book]!
+    wishlist(profileId: ID!): [Book]!
+    toReads(profileId: ID!): [Book]!
+    alreadyRead: [Book]!
     book(bookId: ID!): Book
-    notes:[Note]!
-    getBookNote(noteId: ID!): Note
+    getBookNote(bookId: ID!, profileId: ID!): Note
   }
 
 type Mutation {
     addProfile(usernamename: String!, email: String!, password: String!): Profile
     addBook(title: String!, author: String!, ISBN: String!, publisher: String!, pub_Date: String!, description: String!, page_Count: Int!, img_Link: String!, link: String!): Book
-    addToAlreadyRead(bookId: ID!, title:String!): Profile
-    addToWishlist(bookId: ID!, title:String!): Profile
-    addTo_ToReads(bookId: ID!, title:String!): Profile
-    addNote(noteId: ID!, noteText: String!, rating: Int!, user: Profile): Book
+    addToAlreadyRead(profileId: ID!, bookID: ID!): Profile
+    addToWishlist(bprofileId: ID!, bookID: ID!): Profile
+    addTo_ToReads(profileId: ID!, bookID: ID!): Profile
+    addNote(bookId: ID!, noteText: String!, rating: Int!, user: Profile): Book
 
     # login(email: String!, password: String!): Auth
     

@@ -28,7 +28,11 @@ const resolvers = {
       return Profile.findOne({ _id: profileId }).populate({path: 'Already_Read'}).select("Already_Read");
     },
 
-    book: async (parent, { bookId, profileId }) => {
+    book: async (parent, { bookId }) => {
+      return Profile.findOne({ _id: bookId });
+    },
+
+    getBookNote: async (parent, { bookId, profileId }) => {
       await Books.findOne({ _id: bookId })
       .populate({
         path: 'Notes',
@@ -47,13 +51,20 @@ const resolvers = {
     exec();
 */
 
-    notes: async () => {
-      return Note.find();
+//do we need this ?? vv
+ /*   notes: async (parent, { bookId, profileId }) => {
+      await Books.findOne({ _id: bookId })
+      .populate({
+        path: 'Notes',
+        match: { user: { _id: profileId } }
+      })
     },
 
     getBookNote: async (parent, { user }) => {
       return Note.findOne({ user:  });
     },
+
+    */
   },
 
 
@@ -64,11 +75,11 @@ const resolvers = {
     addBook: async (parent, { author, ISBN, title, description, pub_Date, publisher, page_Count, img_Link, link }) => {
       return Profile.create({ author, ISBN, title, description, pub_Date, publisher, page_Count, img_Link, link });
     },
-    addNote: async (parent, { bookId, noteText, rating }) => {
+    addNote: async (parent, { bookId, noteText, rating, user }) => {
       return Books.findOneAndUpdate(
         { _id: bookId },
         {
-          $addToSet: { noteText: noteText, rating: rating },
+          $addToSet: { noteText: noteText, rating: rating, user: user },
         },
         {
           new: true,
