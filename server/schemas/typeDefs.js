@@ -44,6 +44,9 @@ const typeDefs = `
     book(bookId: ID!): Book
     notes:[Note]!
     getBookNote(noteId: ID!): Note
+    wishlist(profileId: ID!): Profile
+    toReads(profileId: ID!): Profile
+    alreadyRead(profileId: ID!): Profile
   }
 
 type Mutation {
@@ -52,7 +55,7 @@ type Mutation {
     addToAlreadyRead(bookId: ID!, title:String!): Profile
     addToWishlist(bookId: ID!, title:String!): Profile
     addTo_ToReads(bookId: ID!, title:String!): Profile
-    addNote(noteId: ID!, noteText: String!, rating: Int!, user: Profile): Book
+    addNote(noteId: ID!, noteText: String!, rating: Int!, user: ID!): Book
 
     login(username: String!, password: String!): Auth
     
