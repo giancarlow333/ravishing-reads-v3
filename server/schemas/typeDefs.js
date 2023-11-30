@@ -7,7 +7,6 @@ const typeDefs = `
     Already_Read:[Book]!,
     To_Reads: [Book]!
     Wishlist: [Book]!
-    ]
   }
 
   type Note {
@@ -39,20 +38,20 @@ const typeDefs = `
     books:[Book]!
     book(_id: ID!): Book
     notes:[Note]!
-    book(_id: ID!): Note
+    getBookNote(_id: ID!): Note
   }
 
 type Mutation {
     addProfile(usernamename: String!, email: String!, password: String!): Profile
-    addBook(title: String!, author: String!, ISBN: String!, publisher: String!, title: String!, pub_Date: String!, description: String!, page_Count: Int!, img_Link: String!, link: String!): Book
-    addToAlreadyRead(_id: ID!, Already_Read: [Book]!, title:String!): Profile
+    addBook(title: String!, author: String!, ISBN: String!, publisher: String!, pub_Date: String!, description: String!, page_Count: Int!, img_Link: String!, link: String!): Book
+    addToAlreadyRead(_id: ID!, title:String!): Profile
     addNote(_id: ID!, noteText: String!, rating: Int!): Book
 
-    login(email: String!, password: String!): Auth
+    # login(email: String!, password: String!): Auth
     
     deleteProfile(_id: ID!): Profile
-    removeBook(_id: ID!, _id: ID!): Book
-    removeNote(_id: ID!, _id: ID!): Book
+    removeBook(_id: ID!): Book
+    removeNote(_id: ID!): Book
   }
 `;
 
