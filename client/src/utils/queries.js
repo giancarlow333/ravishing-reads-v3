@@ -174,24 +174,24 @@ export const QUERY_BOOKS = gql`
 export const QUERY_SINGLE_BOOK = gql`
 query getSingleBook($_id: ID!) {
   book (_id: $_id) {
+      _id
+      title
+      author
+      ISBN
+      publisher
+      pub_Date
+      description
+      page_Count
+      img_Link
+      link
+      last_Accessed
+      notes {
         _id
-        title
-        author
-        ISBN
-        publisher
-        pub_Date
-        description
-        page_Count
-        img_Link
-        link
-        last_Accessed
-        notes {
-          _id
-          createdAt
-          userId
-          noteText
-          rating
-        }
+        createdAt
+        userId
+        noteText
+        rating
+      }
     }
   }
 `;
