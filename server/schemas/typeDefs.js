@@ -40,10 +40,12 @@ const typeDefs = `
   type Query {
     profiles: [Profile]!
     profile(profileId: ID!): Profile
-    books:[Book]!
+    books(profileId: ID!):[Book]!
+    wishlist(profileId: ID!): [Book]!
+    toReads(profileId: ID!): [Book]!
+    alreadyRead: [Book]!
     book(bookId: ID!): Book
-    notes:[Note]!
-    getBookNote(noteId: ID!): Note
+    getBookNote(bookId: ID!, profileId: ID!): Note
     wishlist(profileId: ID!): Profile
     toReads(profileId: ID!): Profile
     alreadyRead(profileId: ID!): Profile
@@ -52,10 +54,10 @@ const typeDefs = `
 type Mutation {
     addProfile(username: String!, email: String!, password: String!): Auth
     addBook(title: String!, author: String!, ISBN: String!, publisher: String!, pub_Date: String!, description: String!, page_Count: Int!, img_Link: String!, link: String!): Book
-    addToAlreadyRead(bookId: ID!, title:String!): Profile
-    addToWishlist(bookId: ID!, title:String!): Profile
-    addTo_ToReads(bookId: ID!, title:String!): Profile
-    addNote(noteId: ID!, noteText: String!, rating: Int!, user: ID!): Book
+    addToAlreadyRead(profileId: ID!, bookID: ID!): Profile
+    addToWishlist(profileId: ID!, bookID: ID!): Profile
+    addTo_ToReads(profileId: ID!, bookID: ID!): Profile
+    addNote(bookId: ID!, noteText: String!, rating: Int!, user: Profile): Book
 
     login(username: String!, password: String!): Auth
     
