@@ -1,3 +1,5 @@
+//header has been added to all pages, to be displayed when page is display 
+
 import React, { useState, useEffect } from 'react';
 import '../index.css';
 import Auth from '../utils/auth';

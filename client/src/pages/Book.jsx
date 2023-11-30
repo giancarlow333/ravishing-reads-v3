@@ -12,7 +12,7 @@ import Header from '../components/Header';
                         <a href="/Bookdetails"   className="text-sky-100 text-center text-md  bg-sky-600 w-32 h-8 m-1 pb-2 shadow-inner shadow-white">View</a>
                 
                     </div>
-                    <div className="flex flex-col w-10/12 mr-8">
+                    <div className="flex flex-col w-10/12 mr-8 overflow: auto">
                         <p className="text-orange-950 text-left text-2xl justify-self-center font-bold antialiased mt-2">Alice in Wonderland <span className="text-blue-600 text-sm">(2019)</span></p>
                         <p className="text-orange-950 text-left text-lg justify-self-center font-bold antialiased my-2">by Carroll</p>
                         <p className="text-orange-950 text-left text-lg justify-self-center font-serif antialiased">ISBN:</p>

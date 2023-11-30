@@ -9,24 +9,24 @@ const resolvers = {
       return Profile.find();
     },
 
-    profile: async (parent, { _id }) => {
-      return Profile.findOne({ _id: _id });
+    profile: async (parent, { profileId }) => {
+      return Profile.findOne({ _id: profileId });
     },
 
     books: async () => {
       return Books.find();
     },
 
-    book: async (parent, { _id }) => {
-      return Books.findOne({ _id: _id });
+    book: async (parent, { bookId }) => {
+      return Books.findOne({ _id: bookId });
     },
 
     notes: async () => {
       return Note.find();
     },
 
-    note: async (parent, { _id }) => {
-      return Note.findOne({ _id: _id });
+    getBookNote: async (parent, { noteId }) => {
+      return Note.findOne({ _id: noteId });
     },
   },
 
@@ -62,9 +62,9 @@ const resolvers = {
     addBook: async (parent, { author, ISBN, title, description, pub_Date, publisher, page_Count, img_Link, link }) => {
       return Profile.create({ author, ISBN, title, description, pub_Date, publisher, page_Count, img_Link, link });
     },
-    addNote: async (parent, { _id, noteText, rating }) => {
+    addNote: async (parent, { noteId, noteText, rating }) => {
       return Books.findOneAndUpdate(
-        { _id: _id },
+        { _id: noteId },
         {
           $addToSet: { noteText: noteText, rating: rating },
         },
@@ -74,33 +74,57 @@ const resolvers = {
         }
       );
     },
-    // addToAlreadyRead: async (parent, { _id, book}) => {
-    //   return Profile.findOneAndUpdate(
-    //     { _id: _id},
-    //     {
-    //       $addToSet: { Already_Read: {book:book}},
-    //     },
-    //     {
-    //       new: true,
-    //       runValidators: true,
-    //     }
-    //   );
-    // },
-    deleteProfile: async (parent, { _id }) => {
-      return Profile.findOneAndDelete({ _id: _id },
+    addToAlreadyRead: async (parent, { profileId, title}) => {
+      return Profile.findOneAndUpdate(
+        { _id: profileId},
+        {
+          $addToSet: { Already_Read: {_id: profileId}},
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    },
+    addToWishlist: async (parent, { profileId, title}) => {
+      return Profile.findOneAndUpdate(
+        { _id: profileId},
+        {
+          $addToSet: { Wishlist: {_id: profileId}},
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    },
+    addTo_ToReads: async (parent, { profileId, title}) => {
+      return Profile.findOneAndUpdate(
+        { _id: profileId},
+        {
+          $addToSet: { To_Reads: {_id: profileId}},
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    },
+    deleteProfile: async (parent, { profileId }) => {
+      return Profile.findOneAndDelete({ _id: profileId },
         { new: true });
     },
-    removeBook: async (parent, { _id }) => {
+    removeBook: async (parent, { bookId, title }) => {
       return Profile.findOneAndUpdate(
-        { _id: _id },
-        // { $pull: { title: title } },
+        { _id: bookId },
+        { $pull: { title: title } },
         { new: true }
       );
     },
-    removeNote: async (parent, { _id }) => {
+    removeNote: async (parent, { noteId }) => {
       return Books.findOneAndUpdate(
-        { _id: _id },
-        { $pull: { _id: _id } },
+        { _id: noteId },
+        { $pull: { _id: noteId } },
         { new: true }
       );
     },
