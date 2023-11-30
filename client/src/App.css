@@ -1269,7 +1269,7 @@ button:focus {
 }
 
 .darkmode--activated .custom-bg {
-  background-image: url(./img/Backgrounds/darkbackground.jpeg);
+  background-image: url("/img/Backgrounds/darkbackground.jpeg");
 }
 
 .placeholder\:italic::-moz-placeholder {
