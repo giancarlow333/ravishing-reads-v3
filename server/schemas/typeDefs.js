@@ -1,81 +1,58 @@
 const typeDefs = `
   type Profile {
     _id: ID
-    userId: Number
     username: String
     email: String
-    # There is now a field to store the user's password
     password: String
-    Already_Read: [Book]!
+    Already_Read:[Book]!,
     To_Reads: [Book]!
     Wishlist: [Book]!
+    ]
   }
 
   type Note {
     _id: ID
-    noteID: ID
     noteText: String
     createdAt: String
-    rating: Number
+    rating: Int
   }
 
+  
   type Book {
     _id: ID
-    title: Strong
     author: String
     ISBN: String
     pub_Date: String
+    publisher: String
     title: String
     description: String
-    page_Count: Number
+    page_Count: Int
     img_Link: String
     link: String
-    notes: [Note]!
     lastAccessed: String
-  }
-
-
-  # Set up an Auth type to handle returning data from a profile creating or user login
-  type Auth {
-    token: ID!
-    profile: Profile
-  }
-
-  type Thought {
-    _id: ID
-    thoughtText: String
-    thoughtAuthor: String
-    createdAt: String
-    comments: [Comment]!
-  }
-
-  type Comment {
-    _id: ID
-    commentText: String
-    createdAt: String
+    notes: [Note]!
   }
 
   type Query {
     profiles: [Profile]!
-    profile(profileId: ID!): Profile
-    
-    thoughts: [Thought]!
-    thought(thoughtId: ID!): Thought
+    profile(_id: ID!): Profile
+    books:[Book]!
+    book(_id: ID!): Book
+    notes:[Note]!
+    book(_id: ID!): Note
   }
 
-  type Mutation {
-    # Set up mutations to handle creating a profile or logging into a profile and return Auth type
-    addProfile(name: String!, email: String!, password: String!): Auth
+type Mutation {
+    addProfile(usernamename: String!, email: String!, password: String!): Profile
+    addBook(title: String!, author: String!, ISBN: String!, publisher: String!, title: String!, pub_Date: String!, description: String!, page_Count: Int!, img_Link: String!, link: String!): Book
+    addToAlreadyRead(_id: ID!, Already_Read: [Book]!, title:String!): Profile
+    addNote(_id: ID!, noteText: String!, rating: Int!): Book
+
     login(email: String!, password: String!): Auth
-
-    addSkill(profileId: ID!, skill: String!): Profile
-    removeProfile(profileId: ID!): Profile
-    removeSkill(profileId: ID!, skill: String!): Profile
-
-    addThought(thoughtText: String!, thoughtAuthor: String!): Thought
-    addComment(thoughtId: ID!, commentText: String!): Thought
-    removeThought(thoughtId: ID!): Thought
-    removeComment(thoughtId: ID!, commentId: ID!): Thought
+    
+    deleteProfile(_id: ID!): Profile
+    removeBook(_id: ID!, _id: ID!): Book
+    removeNote(_id: ID!, _id: ID!): Book
   }
 `;
 

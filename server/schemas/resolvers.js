@@ -1,60 +1,47 @@
 const { Profile } = require('../models');
-const { Thought } = require('../models');
-
-const { signToken, AuthenticationError } = require('../utils/auth');
+const { Books } = require('../models');
+const { Note } = require('../models');
 
 const resolvers = {
   Query: {
-    thoughts: async () => {
-      return Thought.find().sort({ createdAt: -1 });
-    },
-
-    thought: async (parent, { thoughtId }) => {
-      return Thought.findOne({ _id: thoughtId });
-    },
     profiles: async () => {
       return Profile.find();
     },
 
-    profile: async (parent, { profileId }) => {
-      return Profile.findOne({ _id: profileId });
+    profile: async (parent, { _id }) => {
+      return Profile.findOne({ _id: _id });
+    },
+
+    books: async () => {
+      return Books.find();
+    },
+
+    book: async (parent, { _id }) => {
+      return Books.findOne({ _id: _id });
+    },
+
+    notes: async () => {
+      return Note.find();
+    },
+
+    note: async (parent, { _id }) => {
+      return Note.findOne({ _id: _id });
     },
   },
 
+
   Mutation: {
-    addProfile: async (parent, { name, email, password }) => {
-      const profile = await Profile.create({ name, email, password });
-      const token = signToken(profile);
-
-      return { token, profile };
+    addProfile: async (parent, { user, email, password }) => {
+      return Profile.create({ user, email, password });
     },
-    login: async (parent, { email, password }) => {
-      const profile = await Profile.findOne({ email });
-
-      if (!profile) {
-        throw AuthenticationError
-      }
-
-      const correctPw = await profile.isCorrectPassword(password);
-
-      if (!correctPw) {
-        throw AuthenticationError
-      }
-
-      const token = signToken(profile);
-      return { token, profile };
+    addBook: async (parent, { author, ISBN, title, description, pub_Date, publisher, page_Count, img_Link, link }) => {
+      return Profile.create({ author, ISBN, title, description, pub_Date, publisher, page_Count, img_Link, link });
     },
-    removeProfile: async (parent, { profileId }) => {
-      return Profile.findOneAndDelete({ _id: profileId });
-    },
-    addThought: async (parent, { thoughtText, thoughtAuthor }) => {
-      return Thought.create({ thoughtText, thoughtAuthor });
-    },
-    addComment: async (parent, { thoughtId, commentText }) => {
-      return Thought.findOneAndUpdate(
-        { _id: thoughtId },
+    addNote: async (parent, { _id, noteText, rating }) => {
+      return Books.findOneAndUpdate(
+        { _id: _id },
         {
-          $addToSet: { comments: { commentText } },
+          $addToSet: { noteText: noteText, rating: rating },
         },
         {
           new: true,
@@ -62,16 +49,36 @@ const resolvers = {
         }
       );
     },
-    removeThought: async (parent, { thoughtId }) => {
-      return Thought.findOneAndDelete({ _id: thoughtId });
+    addToAlreadyRead: async (parent, { _id, title}) => {
+      return Profile.findOneAndUpdate(
+        { _id: _id},
+        {
+          $addToSet: { Already_Read: {title:title}},
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
     },
-    removeComment: async (parent, { thoughtId, commentId }) => {
-      return Thought.findOneAndUpdate(
-        { _id: thoughtId },
-        { $pull: { comments: { _id: commentId } } },
+    deleteProfile: async (parent, { _id }) => {
+      return Profile.findOneAndDelete({ _id: _id },
+        { new: true });
+    },
+    removeBook: async (parent, { _id, title }) => {
+      return Profile.findOneAndUpdate(
+        { _id: _id },
+        { $pull: { title: title } },
         { new: true }
       );
-    }
+    },
+    removeNote: async (parent, { _id, _id }) => {
+      return Books.findOneAndUpdate(
+        { _id: _id },
+        { $pull: { _id: _id } },
+        { new: true }
+      );
+    },
   },
 };
 

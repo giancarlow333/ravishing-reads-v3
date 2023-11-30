@@ -3,142 +3,154 @@ import { gql } from '@apollo/client';
 export const QUERY_PROFILES = gql`
   query getProfiles {
     profiles {
-      userId
+      _id
       user
       email
       password
-      Already_Read {
-        bookId
-        title
-        author
-        ISBN
-        pub_Date
-        description
-        page_Count
-        img_Link
-        link
-        last_Accessed
-        notes {
-          noteId
-          createdAt
-          userId
-          noteText
-          rating
+      Lists{
+        Already_Read {
+          _id
+          title
+          author
+          ISBN
+          publisher
+          pub_Date
+          description
+          page_Count
+          img_Link
+          link
+          last_Accessed
+          notes {
+            _id
+            createdAt
+            userId
+            noteText
+            rating
+          }
         }
-      }
-      To_Reads {
-        bookId
-        title
-        author
-        ISBN
-        pub_Date
-        description
-        page_Count
-        img_Link
-        link
-        last_Accessed
-        notes {
-          noteId
-          createdAt
-          userId
-          noteText
-          rating
-      }
-      Wishlist {
-        bookId
-        title
-        author
-        ISBN
-        pub_Date
-        description
-        page_Count
-        img_Link
-        link
-        last_Accessed
-        notes {
-          noteId
-          createdAt
-          userId
-          noteText
-          rating
+        To_Reads {
+          _id
+          title
+          author
+          ISBN
+          publisher
+          pub_Date
+          description
+          page_Count
+          img_Link
+          link
+          last_Accessed
+          notes {
+            _id
+            createdAt
+            userId
+            noteText
+            rating
+        }
+        Wishlist {
+          _id
+          title
+          author
+          ISBN
+          publisher
+          pub_Date
+          description
+          page_Count
+          img_Link
+          link
+          last_Accessed
+          notes {
+            _id
+            createdAt
+            userId
+            noteText
+            rating
+        }
       }
     }
   }
 `;
 
 export const QUERY_SINGLE_PROFILES = gql`
-  query getSingleProfile($userId: ID!) {
-    profile (userId: $userId) {
-      userId
-      user
-      email
-      password
-      Already_Read {
-        bookId
-        title
-        author
-        ISBN
-        pub_Date
-        description
-        page_Count
-        img_Link
-        link
-        last_Accessed
-        notes {
-          noteId
-          createdAt
-          userId
-          noteText
-          rating
+  query getSingleProfile($_id: ID!) {
+    profile (_id: $_id) {
+      profiles {
+        _id
+        user
+        email
+        password
+        Lists{
+          Already_Read {
+            _id
+            title
+            author
+            ISBN
+            publisher
+            pub_Date
+            description
+            page_Count
+            img_Link
+            link
+            last_Accessed
+            notes {
+              _id
+              createdAt
+              userId
+              noteText
+              rating
+            }
+          }
+          To_Reads {
+            _id
+            title
+            author
+            ISBN
+            publisher
+            pub_Date
+            description
+            page_Count
+            img_Link
+            link
+            last_Accessed
+            notes {
+              _id
+              createdAt
+              userId
+              noteText
+              rating
+          }
+          Wishlist {
+            _id
+            title
+            author
+            ISBN
+            publisher
+            pub_Date
+            description
+            page_Count
+            img_Link
+            link
+            last_Accessed
+            notes {
+              _id
+              createdAt
+              userId
+              noteText
+              rating
+          }
         }
       }
-      To_Reads {
-        bookId
-        title
-        author
-        ISBN
-        pub_Date
-        description
-        page_Count
-        img_Link
-        link
-        last_Accessed
-        notes {
-          noteId
-          createdAt
-          userId
-          noteText
-          rating
-      }
-      Wishlist {
-        bookId
-        title
-        author
-        ISBN
-        pub_Date
-        description
-        page_Count
-        img_Link
-        link
-        last_Accessed
-        notes {
-          noteId
-          createdAt
-          userId
-          noteText
-          rating
-      }
     }
-  }
-`;
+  `;
 
 export const QUERY_BOOKS = gql`
   query getBooks {
     books {
-        bookId
+      _id
         title
         author
         ISBN
+        publisher
         pub_Date
         description
         page_Count
@@ -146,7 +158,7 @@ export const QUERY_BOOKS = gql`
         link
         last_Accessed
         notes {
-          noteId
+          _id
           createdAt
           userId
           noteText
@@ -157,12 +169,13 @@ export const QUERY_BOOKS = gql`
 `;
 
 export const QUERY_SINGLE_BOOK = gql`
-query getSingleBook($bookId: ID!) {
-  book (bookId: $bookId) {
-        bookId
+query getSingleBook($_id: ID!) {
+  book (_id: $_id) {
+        _id
         title
         author
         ISBN
+        publisher
         pub_Date
         description
         page_Count
@@ -170,7 +183,7 @@ query getSingleBook($bookId: ID!) {
         link
         last_Accessed
         notes {
-          noteId
+          _id
           createdAt
           userId
           noteText
@@ -183,7 +196,7 @@ query getSingleBook($bookId: ID!) {
 export const QUERY_NOTES = gql`
   query getNotes {
       notes {
-        noteId
+        _id
         createdAt
         userId
         noteText
@@ -193,9 +206,9 @@ export const QUERY_NOTES = gql`
 `;
 
 export const QUERY_SINGLE_NOTES = gql`
-query getSingleNote($noteId: ID!) {
-  note (noteId: $noteId){
-        noteId
+query getSingleNote($_id: ID!) {
+  note (_id: $_id){
+        _id
         createdAt
         userId
         noteText
