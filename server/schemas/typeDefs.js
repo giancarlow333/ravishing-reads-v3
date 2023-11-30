@@ -1,6 +1,6 @@
 const typeDefs = `
   type Profile {
-    _id: ID
+    _id: profileId
     username: String
     email: String
     password: String
@@ -10,7 +10,7 @@ const typeDefs = `
   }
 
   type Note {
-    _id: ID
+    _id: noteId
     noteText: String
     createdAt: String
     rating: Int
@@ -18,7 +18,7 @@ const typeDefs = `
 
   
   type Book {
-    _id: ID
+    _id: bookId
     author: String
     ISBN: String
     pub_Date: String
@@ -34,24 +34,24 @@ const typeDefs = `
 
   type Query {
     profiles: [Profile]!
-    profile(_id: ID!): Profile
+    profile(_id: profileId!): Profile
     books:[Book]!
-    book(_id: ID!): Book
+    book(_id: bookId!): Book
     notes:[Note]!
-    getBookNote(_id: ID!): Note
+    getBookNote(_id: noteId!): Note
   }
 
 type Mutation {
     addProfile(usernamename: String!, email: String!, password: String!): Profile
     addBook(title: String!, author: String!, ISBN: String!, publisher: String!, pub_Date: String!, description: String!, page_Count: Int!, img_Link: String!, link: String!): Book
-    addToAlreadyRead(_id: ID!, title:String!): Profile
-    addNote(_id: ID!, noteText: String!, rating: Int!): Book
+    addToAlreadyRead(_id: bookId!, title:String!): Profile
+    addNote(_id: noteId!, noteText: String!, rating: Int!): Book
 
     # login(email: String!, password: String!): Auth
     
-    deleteProfile(_id: ID!): Profile
-    removeBook(_id: ID!): Book
-    removeNote(_id: ID!): Book
+    deleteProfile(_id: profileId!): Profile
+    removeBook(_id: bookId!): Book
+    removeNote(_id: bookId!): Book
   }
 `;
 
