@@ -10,7 +10,7 @@ const typeDefs = `
   }
 
   type Auth {
-    token: ID!
+    token: ID
     profile: Profile
   }
 
@@ -54,7 +54,7 @@ type Mutation {
     addNote(_id: ID!, noteText: String!, rating: Int!): Book
     removeNote(_id: ID!): Note
 
-    login(email: String!, password: String!): Auth
+    login(username: String!, password: String!): Auth
     
     deleteProfile(_id: ID!): Profile
     removeBook(_id: ID!): Book

@@ -40,18 +40,23 @@ const resolvers = {
     },
     login: async (parent, { username, password }) => {
       const profile = await Profile.findOne({ username });
+      let token = null;
 
       if (!profile) {
-        throw new AuthenticationError('Incorrect credentials');
+        return { token, profile };
+        // we should be sending an error for incorrect credentials
+        //throw new AuthenticationError('Incorrect credentials');
       }
 
       const correctPassword = await profile.isCorrectPassword(password);
 
       if (!correctPassword) {
-        throw new AuthenticationError('Incorrect credentials');
+        return { token, profile };
+        // we should be sending an error for incorrect credentials
+        //throw new AuthenticationError('Incorrect credentials');
       }
 
-      const token = signToken(profile);
+      token = signToken(profile);
       return { token, profile };
     },
     addBook: async (parent, { author, ISBN, title, description, pub_Date, publisher, page_Count, img_Link, link }) => {

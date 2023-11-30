@@ -70,7 +70,76 @@ export const ADD_PROFILE = gql`
     }
   }
 `;
-
+export const LOGIN_PROFILE = gql`
+  mutation login($username: String!, $password: String!) {
+    login(username: $username, password:$password) {
+        token
+        profile {
+        _id
+        username
+        email
+        password
+        Already_Read {
+            _id
+            title
+            author
+            ISBN
+            publisher
+            pub_Date
+            description
+            page_Count
+            img_Link
+            link
+            lastAccessed
+            notes {
+                _id
+                createdAt
+                noteText
+                rating
+            }
+        }
+        To_Reads {
+            _id
+            title
+            author
+            ISBN
+            publisher
+            pub_Date
+            description
+            page_Count
+            img_Link
+            link
+            lastAccessed
+            notes {
+                _id
+                createdAt
+                noteText
+                rating
+            }
+        }
+        Wishlist {
+            _id
+            title
+            author
+            ISBN
+            publisher
+            pub_Date
+            description
+            page_Count
+            img_Link
+            link
+            lastAccessed
+            notes {
+                _id
+                createdAt
+                noteText
+                rating
+            }
+        }
+      }
+    }
+  }
+`;
 // export const ADD_BOOK = gql`
 //   mutation addBook($author: String!, $ISBN: String!, $pub_Date: String!, $title: String!, $title: String!, 
 //     $description: String!, $publisher: String!, $page_Count: Int!, $img_Link: String!, $link: String!) {
