@@ -7,7 +7,7 @@ export const QUERY_PROFILES = gql`
       user
       email
       password
-      Lists{
+      Lists {
         Already_Read {
           _id
           title
@@ -46,6 +46,7 @@ export const QUERY_PROFILES = gql`
             userId
             noteText
             rating
+          }
         }
         Wishlist {
           _id
@@ -69,7 +70,7 @@ export const QUERY_PROFILES = gql`
       }
     }
   }
-`;
+}`;
 
 export const QUERY_SINGLE_PROFILES = gql`
   query getSingleProfile($_id: ID!) {
@@ -118,6 +119,7 @@ export const QUERY_SINGLE_PROFILES = gql`
               userId
               noteText
               rating
+            }
           }
           Wishlist {
             _id
@@ -137,11 +139,12 @@ export const QUERY_SINGLE_PROFILES = gql`
               userId
               noteText
               rating
+            }
           }
         }
       }
     }
-  `;
+  }`;
 
 export const QUERY_BOOKS = gql`
   query getBooks {
