@@ -62,7 +62,7 @@ const resolvers = {
     },
 
     getBookNote: async (parent, { user }) => {
-      return Note.findOne({ user:  });
+      return Note.findOne({ user: user });
     },
 
     */

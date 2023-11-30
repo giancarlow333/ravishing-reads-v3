@@ -46,13 +46,16 @@ const typeDefs = `
     alreadyRead: [Book]!
     book(bookId: ID!): Book
     getBookNote(bookId: ID!, profileId: ID!): Note
+    wishlist(profileId: ID!): Profile
+    toReads(profileId: ID!): Profile
+    alreadyRead(profileId: ID!): Profile
   }
 
 type Mutation {
     addProfile(username: String!, email: String!, password: String!): Auth
     addBook(title: String!, author: String!, ISBN: String!, publisher: String!, pub_Date: String!, description: String!, page_Count: Int!, img_Link: String!, link: String!): Book
     addToAlreadyRead(profileId: ID!, bookID: ID!): Profile
-    addToWishlist(bprofileId: ID!, bookID: ID!): Profile
+    addToWishlist(profileId: ID!, bookID: ID!): Profile
     addTo_ToReads(profileId: ID!, bookID: ID!): Profile
     addNote(bookId: ID!, noteText: String!, rating: Int!, user: Profile): Book
 
