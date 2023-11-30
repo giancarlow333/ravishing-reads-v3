@@ -1,6 +1,6 @@
 const typeDefs = `
   type Profile {
-    _id: ID
+    _id: ID!
     username: String
     email: String
     password: String
@@ -10,7 +10,7 @@ const typeDefs = `
   }
 
   type Note {
-    _id: ID
+    _id: ID!
     noteText: String
     createdAt: String
     rating: Int
@@ -18,7 +18,7 @@ const typeDefs = `
 
   
   type Book {
-    _id: ID
+    _id: ID!
     author: String
     ISBN: String
     pub_Date: String
