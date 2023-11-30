@@ -2,10 +2,6 @@
 import { Link } from 'react-router-dom';
 
 const BookList = ({ books, title }) => {
-  if (!books.length) {
-    return <h3>No books Yet</h3>;
-  }
-
   return (
     <div>
       <h3>{title}</h3>
