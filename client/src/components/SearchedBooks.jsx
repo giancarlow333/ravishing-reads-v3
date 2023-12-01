@@ -1,12 +1,15 @@
 //this compnent is meant to be used to display the set of books generated when book search is initiated 
 import { useMutation } from '@apollo/client';
 import React, { useState } from 'react';
+import Auth from '../utils/auth';
+import { ADD_TO_ALREADY_READ } from '../utils/mutations';
 
 function SearchedBook() {
+    console.log(Auth.getProfile().data._id);
     const initialCollections = [
         { value: 'readingList', text: 'Reading List' },
         { value: 'wishlist', text: 'Wishlist' },
-        { value: 'favorites', text: 'Favorites' }
+        { value: 'alreadyRead', text: 'Already Read' }
     ];
 
     const [collections, setCollections] = useState(initialCollections);
@@ -17,6 +20,7 @@ function SearchedBook() {
         setCollections([...collections, newCollection]);
     };
 
+    const [addToAlreadyRead, { data, loading, error }] = useMutation(ADD_TO_ALREADY_READ);
     // Example function to handle 'Create New List' option
     const handleSelectChange = (event) => {
         if (event.target.value === 'createNew') {
@@ -28,10 +32,10 @@ function SearchedBook() {
             }
         }
         // Handle other changes if necessary
-        if (event.target.value === 'wishlist') {
-            useMutation(ADD_BOOK, {
-                variables: {  }
-            });
+        else if (event.target.value === 'alreadyRead') {
+            addToAlreadyRead({ variables: {
+                profileId: Auth.getProfile().data._id, bookId: "656836c433703d499a5a6078"
+            }});
         }
     };
     return (
