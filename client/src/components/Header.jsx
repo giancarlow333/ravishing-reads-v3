@@ -41,6 +41,20 @@ function Header() {
         setLoggedIn(true)
     }
 
+    const isLoggedOut = () => {
+        return <>
+            <button onClick={logout} className="bg-sky-700 w-4/5 h-14 m-4 self-center shadow-white shadow-inner rounded-lg text-3xl font-serif antialiased hover:bg-[#f4edd6] outline outline-4 outline-sky-600 outline-offset-4 hover:outline-[#f4edd6]">Logout</button>
+          </>
+    }
+
+    const isLoggedIn = () =>{
+        return<>
+          
+            <button onClick={() => window.location.href = '/Mylist'} className="bg-sky-700 w-4/5 h-14 m-4 self-center shadow-white shadow-inner rounded-lg text-3xl font-serif antialiased hover:bg-[#f4edd6] outline outline-4 outline-sky-600 outline-offset-4 hover:outline-[#f4edd6]">My Lists</button>
+            <button onClick={() => window.location.href = '/login'} className="bg-sky-700 w-4/5 h-14 m-4 self-center shadow-white shadow-inner rounded-lg text-3xl font-serif antialiased hover:bg-[#f4edd6] outline outline-4 outline-sky-600 outline-offset-4 hover:outline-[#f4edd6]">Login</button>
+          </>
+    }
+
     if(hasLoggedOut)
     return <Navigate to="/" />
   else
@@ -71,17 +85,13 @@ function Header() {
                     </div>
                 </div>
             </div>
-        )}
-        </div>
-        <nav className="flex flex-col content-center h-3/4 w-full max-h-fit">
-            {/* Update buttons to use React's onClick for navigation */}
-            <button onClick={() => window.location.href = '/'} className="bg-sky-700 w-4/5 h-14 m-4 self-center shadow-white shadow-inner rounded-lg text-3xl font-serif antialiased hover:bg-[#f4edd6] outline outline-4 outline-sky-600 outline-offset-4 hover:outline-[#f4edd6]">Home</button>
-            <button onClick={() => window.location.href = '/Mylist'} className="bg-sky-700 w-4/5 h-14 m-4 self-center shadow-white shadow-inner rounded-lg text-3xl font-serif antialiased hover:bg-[#f4edd6] outline outline-4 outline-sky-600 outline-offset-4 hover:outline-[#f4edd6]">My Lists</button>
-            <button onClick={() => window.location.href = '/login'} className="bg-sky-700 w-4/5 h-14 m-4 self-center shadow-white shadow-inner rounded-lg text-3xl font-serif antialiased hover:bg-[#f4edd6] outline outline-4 outline-sky-600 outline-offset-4 hover:outline-[#f4edd6]">Login</button>
-            <button onClick={logout} className="bg-sky-700 w-4/5 h-14 m-4 self-center shadow-white shadow-inner rounded-lg text-3xl font-serif antialiased hover:bg-[#f4edd6] outline outline-4 outline-sky-600 outline-offset-4 hover:outline-[#f4edd6]">Logout</button>
-        </nav>
-    </header>
-);
+            <nav className="flex flex-col content-center h-3/4 w-full max-h-fit">
+                {/* Update buttons to use React's onClick for navigation */}
+                <button onClick={() => window.location.href = '/'} className="bg-sky-700 w-4/5 h-14 m-4 self-center shadow-white shadow-inner rounded-lg text-3xl font-serif antialiased hover:bg-[#f4edd6] outline outline-4 outline-sky-600 outline-offset-4 hover:outline-[#f4edd6]">Home</button>
+                {Auth.loggedIn() ? isLoggedIn() : isLoggedOut() }
+            </nav>
+        </header>
+    );
 }
 
 export default Header;
