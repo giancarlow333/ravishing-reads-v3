@@ -19,7 +19,7 @@ const BookList = ({ books }) => {
                   <div className="w-3/4 flex flex-col justify-top items-top">
                     <p className="text-orange-950 text-left text-5xl justify-self-center font-serif antialiased mt-2">{book.title}<span className="text-blue-600 text-lg font-mono">({book.pub_Date})</span></p>
                     <p className="text-orange-950 text-left text-2xl justify-self-center font-serif antialiased my-2">by {book.author}</p>
-                    <p className="text-orange-950 text-left text-lg justify-self-center font-serif antialiased">Reviews: ???</p>
+
                   </div>
                 </div>
               </div>
