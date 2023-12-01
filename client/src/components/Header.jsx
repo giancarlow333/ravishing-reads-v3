@@ -43,7 +43,7 @@ function Header() {
 
     const isLoggedOut = () => {
         return <>
-            <button onClick={() => window.location.href = '/login'} className="bg-sky-700 w-4/5 h-14 m-4 self-center shadow-white shadow-inner rounded-lg text-3xl font-serif antialiased hover:bg-[#f4edd6] outline outline-4 outline-sky-600 outline-offset-4 hover:outline-[#f4edd6]">Login</button>
+            <button onClick={() => window.location.href = '/'} className="bg-sky-700 w-4/5 h-14 m-4 self-center shadow-white shadow-inner rounded-lg text-3xl font-serif antialiased hover:bg-[#f4edd6] outline outline-4 outline-sky-600 outline-offset-4 hover:outline-[#f4edd6]">Login</button>
         </>
     }
 

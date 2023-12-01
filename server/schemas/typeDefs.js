@@ -34,7 +34,7 @@ const typeDefs = `
     img_Link: String
     link: String
     lastAccessed: String
-    notes: [Note]!
+    notes: [Note]
   }
 
   type Query {

@@ -13,7 +13,7 @@ We learned a lot about react, state, mutations, mongodb, express.js and more
 Front end we used React and Tailwind
 For the database we used MongoDB and Mongoose
 We used Express.js for connectivity
-Deployment was to Heroku
+Deployment was to [Heroku](https://ravishing-reads-react-fb02d5314bcc.herokuapp.com/)
 
 
 ## Usage

@@ -6,7 +6,7 @@ import './index.css';
 
 import App from './App';
 import Error from './pages/Error';
-import Home from './pages/home.jsx'; //booksearch page 
+import Home from './pages/Home.jsx'; //booksearch page 
 import BookDetails from './pages/BookDetails.jsx';
 import Login from './pages/Login.jsx';
 import Signup from './pages/Signup.jsx';
@@ -21,15 +21,15 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />,
+        element: <Login />,
       },
       {
         path: '/books/:bookId',
         element: <BookDetails />,
       },
       {
-        path: '/Login',
-        element: <Login />,
+        path: '/home',
+        element: <Home />,
       },
       {
         path: '/Signup',
