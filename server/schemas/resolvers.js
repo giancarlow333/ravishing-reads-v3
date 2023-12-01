@@ -30,7 +30,7 @@ const resolvers = {
     },
 
     book: async (parent, { bookId }) => {
-      return Profile.findOne({ _id: bookId });
+      return Books.findOne({ _id: bookId });
     },
 
     getBookNote: async (parent, { bookId, profileId }) => {

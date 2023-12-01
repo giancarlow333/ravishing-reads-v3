@@ -28,10 +28,11 @@ function Signup() {
         event.preventDefault();
     
         try {
-            console.log(formState);
+            console.log("formState: ", formState);
           const { data } = await addProfile({
             variables: { ...formState },
           });
+          console.log("data: ", data);
 
           if(data.addProfile.token != null){
             console.log(data.addProfile.token);
