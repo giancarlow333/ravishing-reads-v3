@@ -26,12 +26,12 @@ function Header() {
     };
 
     const avatarOptions = [
-        "./public/avators/book1.jpeg",
-        "./public/avators/book2.jpeg",
-        "./public/avators/bookworm1.jpeg",
-        "./public/avators/cat.jpeg",
-        "./public/avators/panda.jpeg",
-        "./public/avators/pig.png",
+        "/avators/book1.jpeg",
+        "/avators/book2.jpeg",
+        "/avators/bookworm1.jpeg",
+        "/avators/cat.jpeg",
+        "/avators/panda.jpeg",
+        "/avators/pig.png",
     ];
 
 
