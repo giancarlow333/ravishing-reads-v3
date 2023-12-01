@@ -67,7 +67,7 @@ function Login() {
       };
 
       if(Auth.loggedIn())
-        return <Navigate to="/" />
+        return <Navigate to="/home" />
       else
 
     return (
