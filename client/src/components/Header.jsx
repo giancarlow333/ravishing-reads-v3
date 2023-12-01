@@ -62,9 +62,9 @@ function Header() {
     }
 
         return (
-            <header className="flex flex-col justify-center h-screen w-3/12 bg-repeat overflow-auto" style={{ backgroundImage: `url(./img/pages.png)` }}>
+            <header className="flex flex-col justify-center h-screen w-3/12 bg-repeat overflow-auto" style={{ backgroundImage: `url(/img/pages.png)` }}>
                 <div className="flex flex-col justify-top h-screen w-full rounded-full">
-                    <img className="w-3/5 m-5 rounded-md self-center" src='./img/logo.png' alt="TechLogoImg" />
+                    <img className="w-3/5 m-5 rounded-md self-center" src='/img/logo.png' alt="TechLogoImg" />
                     <div className="rounded-full w-2/6 self-center mb-8 bg-[#00214f] border-4 border-amber-600 border-solid shadow-black shadow-xl outline outline-4 outline-amber-600 outline-offset-4">
                         <img id="display_image" className="h-6/6  rounded-full bg-black" src={selectedAvatar || "./path/to/default-avatar.jpeg"} alt="Selected Avatar" />
                     </div>

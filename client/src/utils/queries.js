@@ -223,17 +223,18 @@ export const QUERY_SINGLE_NOTES = gql`
 `;
 
 export const QUERY_BOOK_NOTE = gql`
-  query getBoookNote($bookId: ID!, $profileId: ID!) {
-    note(bookId: $bookId, profileId:$profileId {
+query getBookNote($bookId: ID!, $profileId: ID!) {
+  getBookNote (bookId: $bookId, profileId:$profileId) {
+    _id
+    createdAt
+    user {
       _id
-      createdAt
-      userId
-      noteText
-      rating
     }
+    noteText
+    rating
   }
+}
 `;
-
 
 export const QUERY_WISHLIST = gql`
   query wishlist($profileId: ID!) {
@@ -252,9 +253,10 @@ export const QUERY_WISHLIST = gql`
       notes {
         _id
         createdAt
-        # userId
+        user { _id }
         noteText
         rating
+      }
     }
   }
 `;
@@ -276,9 +278,10 @@ export const QUERY_TOREADS = gql`
       notes {
         _id
         createdAt
-        # userId
+        user { _id }
         noteText
         rating
+      }
     }
   }
 `;
@@ -300,10 +303,10 @@ export const QUERY_ALREADYREAD = gql`
       notes {
         _id
         createdAt
-        # userId
+        user { _id }
         noteText
         rating
+      }
     }
   }
 `;
-

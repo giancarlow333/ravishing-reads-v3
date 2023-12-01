@@ -15,9 +15,6 @@ const BookDetails = () => {
     });
   
     const book = data?.book || {};
-    if (loading) {
-      return <div>Loading...</div>;
-    }
     //review bar 
     const [isBottomSheetOpen, setIsBottomSheetOpen] = useState(false);
 
@@ -25,10 +22,14 @@ const BookDetails = () => {
         setIsBottomSheetOpen(!isBottomSheetOpen);
     };
 
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
     return (
     <div className="flex flex-row h-screen w-screen overflow-auto">    
         <Header />   
-        <div className="flex flex-col justify-center items-center self-center h-screen w-9/12 bg-repeat"  style={{ backgroundImage: `url("./img/starBackground.png")` }}>
+        <div className="flex flex-col justify-center items-center self-center h-screen w-9/12 bg-repeat"  style={{ backgroundImage: `url("/img/starBackground.png")` }}>
             <div className="flex justify-between items-center flex-col w-5/6 h-5/6 overflow-auto bg-[#f8f2e5] bg-opacity-90 rounded-lg">
                 <div className="flex flex-row justify-top items-top w-full h-3/5">
                     <div className="flex flex-col justify-top items-center w-1/4 p-6">

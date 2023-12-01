@@ -1,4 +1,5 @@
 //this compnent is meant to be used to display the set of books generated when book search is initiated 
+import { useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 
 function SearchedBook() {
@@ -27,11 +28,16 @@ function SearchedBook() {
             }
         }
         // Handle other changes if necessary
+        if (event.target.value === 'wishlist') {
+            useMutation(ADD_BOOK, {
+                variables: {  }
+            });
+        }
     };
     return (
         <div className="flex flex-row bg-white bg-opacity-90 w-10/12 h-2/5 shadow-md shadow-slate-900 rounded-md shrink ">
             <div className="flex flex-col justify-center items-center w-2/12">
-                <img className="w-8/12 rounded-sm" src='./public/avators/alice.jpg' alt="Alice in Wonderland" />
+                <img className="w-8/12 rounded-sm" src='/avators/alice.jpg' alt="Alice in Wonderland" />
               
                 <select id="listSelect" onChange={handleSelectChange} className=" text-sky-100 text-center text-lg bg-sky-600 w-4/6 h-1/6 m-1 shadow-inner shadow-white font-serif">
                     {collections.map((collection) => (
