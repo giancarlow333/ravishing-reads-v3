@@ -57,9 +57,9 @@ function Header() {
         </>
     }
 
-    if (hasLoggedOut)
+    if (hasLoggedOut) {
         return <Navigate to="/" />
-    else
+    }
 
         return (
             <header className="flex flex-col justify-center h-screen w-3/12 bg-repeat overflow-auto" style={{ backgroundImage: `url(./img/pages.png)` }}>
