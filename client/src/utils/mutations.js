@@ -81,31 +81,32 @@ export const LOGIN_PROFILE = gql`
     }
   }
 `;
- export const ADD_BOOK = gql`
-   mutation addBook($author: String!, $ISBN: String!, $pub_Date: String!, $title: String!, $title: String!, 
-     $description: String!, $publisher: String!, $page_Count: Int!, $img_Link: String!, $link: String!) {
-     addBook(author: $author, ISBN: $ISBN, pub_Date: $pub_Date, title: $title,
-       description: $description, publisher: $publisher, page_Count: $page_Count, img_Link: $img_Link, link: $link) {
-         _id
-         title
-        author
-         ISBN
-         pub_Date
-         description
-         page_Count
-         img_Link
-         link
-         last_Accessed
-         notes {
-           _id
-           createdAt
-           userId
-           noteText
-           rating
-         }
-     }
-   }
- `;
+
+export const ADD_BOOK = gql`
+  mutation addBook($author: String!, $ISBN: String!, $pub_Date: String!, $title: String!, 
+  $description: String!, $publisher: String!, $page_Count: Int!, $img_Link: String!, $link: String!) {
+  addBook(author: $author, ISBN: $ISBN, pub_Date: $pub_Date, title: $title,
+    description: $description, publisher: $publisher, page_Count: $page_Count, img_Link: $img_Link, link: $link) {
+     _id
+     title
+     author
+     ISBN
+     pub_Date
+     description
+     page_Count
+     img_Link
+     link
+     lastAccessed
+     notes {
+       _id
+       createdAt
+       user { _id }
+       noteText
+       rating
+    }
+  }
+}
+`;
 
 export const ADD_NOTE = gql`
   mutation addNote($_id: ID!, $noteText: String!, $rating: Int!) {
@@ -142,7 +143,7 @@ mutation addToAlreadyRead($_id: ID!, $bookId: ID!){
 
 export const ADD_TO_WISHLIST = gql`
 mutation addToWishlist($_id: ID!, $bookId: ID!){
-  addToWishlist(_id:$_id, bookId: $bookId){
+  addToWishlist(_id: $_id, bookId: $bookId){
     user
     email
   }

@@ -40,7 +40,7 @@ const typeDefs = `
   type Query {
     profiles: [Profile]!
     profile(profileId: ID!): Profile
-    books(profileId: ID!):[Book]!
+    books:[Book]!
     wishlist(profileId: ID!): [Book]!
     toReads(profileId: ID!): [Book]!
     alreadyRead: [Book]!
