@@ -1,5 +1,5 @@
 import Header from '../components/Header';
-import SearchedBooks from '../components/SearchedBooks.jsx';
+import SearchedBook from '../components/SearchedBook.jsx';
 
 function Home() {
     return (
@@ -16,7 +16,7 @@ function Home() {
             </div>
 
             <div className="flex flex-col justify-top items-center flex-col w-full h-full overflow-auto">
-                <SearchedBooks />
+                <SearchedBook />
             </div>
         </div>
     </div>
