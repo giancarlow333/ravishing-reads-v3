@@ -131,14 +131,29 @@ export const ADD_NOTE = gql`
   }
 `;
 
-export const ADD_TO_LIST = gql`
-mutation addToAlreadyRead($_id: ID!, $Lists: String!, $title: String!,
-  $Already_Read: [Book]!, $To_Reads: [Book]!, $Wishlist: [Book]!){
-  addToAlreadyRead(_id: $_id, Lists: $Lists, title:$title, Already_Read: $Already_Read,
-    To_Reads: $To_Reads, Wishlist: $Wishlist){
-    username
-    Lists
-    title
+export const ADD_TO_ALREADY_READ = gql`
+mutation addToAlreadyRead($_id: ID!, $bookId: ID!){
+  addToAlreadyRead(_id:$_id, bookId: $bookId){
+    user
+    email
+  }
+}
+`;
+
+export const ADD_TO_WISHLIST = gql`
+mutation addToWishlist($_id: ID!, $bookId: ID!){
+  addToWishlist(_id:$_id, bookId: $bookId){
+    user
+    email
+  }
+}
+`;
+
+export const ADD_TO_TO_READS = gql`
+mutation addTo_ToReads($_id: ID!, $bookId: ID!){
+  aaddTo_ToReads(_id:$_id, bookId: $bookId){
+    user
+    email
   }
 }
 `;
