@@ -136,12 +136,12 @@ export const ADD_NOTE = gql`
 `;
 
 export const ADD_TO_ALREADY_READ = gql`
-mutation addToAlreadyRead($_id: ID!, $bookId: ID!){
-  addToAlreadyRead(_id:$_id, bookId: $bookId){
-    user
-    email
+mutation addToAlreadyRead($profileId: ID!, $bookId: ID!)  {
+  addToAlreadyRead(profileId: $profileId, bookId: $bookId) {
+    username
   }
 }
+
 `;
 
 export const ADD_TO_WISHLIST = gql`

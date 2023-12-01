@@ -5,7 +5,7 @@ import Auth from '../utils/auth';
 import { ADD_TO_ALREADY_READ } from '../utils/mutations';
 
 function SearchedBook() {
-    console.log(Auth.getProfile());
+    console.log(Auth.getProfile().data._id);
     const initialCollections = [
         { value: 'readingList', text: 'Reading List' },
         { value: 'wishlist', text: 'Wishlist' },
@@ -20,13 +20,7 @@ function SearchedBook() {
         setCollections([...collections, newCollection]);
     };
 
-    function addToAlreadyReadFunction () {
-        useMutation(ADD_TO_ALREADY_READ, {
-            variables: {
-                _id: Auth.getProfile()._id, bookId: "2"
-            }
-        });
-    }
+    const [addToAlreadyRead, { data, loading, error }] = useMutation(ADD_TO_ALREADY_READ);
     // Example function to handle 'Create New List' option
     const handleSelectChange = (event) => {
         if (event.target.value === 'createNew') {
@@ -39,7 +33,9 @@ function SearchedBook() {
         }
         // Handle other changes if necessary
         else if (event.target.value === 'alreadyRead') {
-            addToAlreadyReadFunction();
+            addToAlreadyRead({ variables: {
+                profileId: Auth.getProfile().data._id, bookId: "656836c433703d499a5a6078"
+            }});
         }
     };
     return (
