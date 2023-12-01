@@ -222,3 +222,88 @@ export const QUERY_SINGLE_NOTES = gql`
   }
 `;
 
+export const QUERY_BOOK_NOTE = gql`
+  query getBoookNote($bookId: ID!, $profileId: ID!) {
+    note(bookId: $bookId, profileId:$profileId {
+      _id
+      createdAt
+      userId
+      noteText
+      rating
+    }
+  }
+`;
+
+
+export const QUERY_WISHLIST = gql`
+  query wishlist($profileId: ID!) {
+    wishlist(profileId: $profileId) {
+      _id
+      title
+      author
+      ISBN
+      publisher
+      pub_Date
+      description
+      page_Count
+      img_Link
+      link
+      lastAccessed
+      notes {
+        _id
+        createdAt
+        # userId
+        noteText
+        rating
+    }
+  }
+`;
+
+export const QUERY_TOREADS = gql`
+  query toReads($profileId: ID!) {
+    toReads(profileId: $profileId) {
+      _id
+      title
+      author
+      ISBN
+      publisher
+      pub_Date
+      description
+      page_Count
+      img_Link
+      link
+      lastAccessed
+      notes {
+        _id
+        createdAt
+        # userId
+        noteText
+        rating
+    }
+  }
+`;
+
+export const QUERY_ALREADYREAD = gql`
+  query alreadyRead($profileId: ID!) {
+    alreadyRead(profileId: $profileId) {
+      _id
+      title
+      author
+      ISBN
+      publisher
+      pub_Date
+      description
+      page_Count
+      img_Link
+      link
+      lastAccessed
+      notes {
+        _id
+        createdAt
+        # userId
+        noteText
+        rating
+    }
+  }
+`;
+
