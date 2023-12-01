@@ -6,7 +6,7 @@ import './index.css';
 
 import App from './App';
 import Error from './pages/Error';
-import Home from './pages/home.jsx'; //booksearch page 
+import Home from './pages/Home.jsx'; //booksearch page 
 import BookDetails from './pages/BookDetails.jsx';
 import Login from './pages/Login.jsx';
 import Signup from './pages/Signup.jsx';
