@@ -17,17 +17,55 @@ const resolvers = {
       return Books.find();
     },
 
+    wishlist: async (parent, { profileId }) => {
+      return Profile.findOne({ _id: profileId }).populate({path: 'Wishlist'}).select("Wishlist");
+    },
+
+    toReads: async (parent, { profileId }) => {
+      return Profile.findOne({ _id: profileId }).populate({path: 'To_Reads'}).select("To_Reads");
+    },
+
+    alreadyRead: async (parent, { profileId }) => {
+      return Profile.findOne({ _id: profileId }).populate({path: 'Already_Read'}).select("Already_Read");
+    },
+
     book: async (parent, { bookId }) => {
       return Books.findOne({ _id: bookId });
     },
 
-    notes: async () => {
-      return Note.find();
+    getBookNote: async (parent, { bookId, profileId }) => {
+      await Books.findOne({ _id: bookId })
+      .populate({
+        path: 'Notes',
+        match: { user: { _id: profileId } }
+      })
     },
 
-    getBookNote: async (parent, { noteId }) => {
-      return Note.findOne({ _id: noteId });
+
+   /* Reference from Mozilla:
+    await Story.
+    find().
+    populate({
+      path: 'fans',
+      match: { age: { $gte: 21 } },
+    }).
+    exec();
+*/
+
+//do we need this ?? vv
+ /*   notes: async (parent, { bookId, profileId }) => {
+      await Books.findOne({ _id: bookId })
+      .populate({
+        path: 'Notes',
+        match: { user: { _id: profileId } }
+      })
     },
+
+    getBookNote: async (parent, { user }) => {
+      return Note.findOne({ user: user });
+    },
+
+    */
   },
 
 
@@ -62,11 +100,11 @@ const resolvers = {
     addBook: async (parent, { author, ISBN, title, description, pub_Date, publisher, page_Count, img_Link, link }) => {
       return Profile.create({ author, ISBN, title, description, pub_Date, publisher, page_Count, img_Link, link });
     },
-    addNote: async (parent, { noteId, noteText, rating }) => {
+    addNote: async (parent, { bookId, noteText, rating, user }) => {
       return Books.findOneAndUpdate(
-        { _id: noteId },
+        { _id: bookId },
         {
-          $addToSet: { noteText: noteText, rating: rating },
+          $addToSet: { noteText: noteText, rating: rating, user: user },
         },
         {
           new: true,
@@ -74,11 +112,11 @@ const resolvers = {
         }
       );
     },
-    addToAlreadyRead: async (parent, { profileId, title}) => {
+    addToAlreadyRead: async (parent, { profileId, bookId}) => {
       return Profile.findOneAndUpdate(
         { _id: profileId},
         {
-          $addToSet: { Already_Read: {_id: profileId}},
+          $addToSet: { Already_Read: {_id: bookId}},
         },
         {
           new: true,
@@ -86,11 +124,11 @@ const resolvers = {
         }
       );
     },
-    addToWishlist: async (parent, { profileId, title}) => {
+    addToWishlist: async (parent, { profileId, bookId}) => {
       return Profile.findOneAndUpdate(
         { _id: profileId},
         {
-          $addToSet: { Wishlist: {_id: profileId}},
+          $addToSet: { Wishlist: {_id: bookId}},
         },
         {
           new: true,
@@ -98,11 +136,11 @@ const resolvers = {
         }
       );
     },
-    addTo_ToReads: async (parent, { profileId, title}) => {
+    addTo_ToReads: async (parent, { profileId, bookId}) => {
       return Profile.findOneAndUpdate(
         { _id: profileId},
         {
-          $addToSet: { To_Reads: {_id: profileId}},
+          $addToSet: { To_Reads: {_id: bookId}},
         },
         {
           new: true,

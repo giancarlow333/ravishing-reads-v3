@@ -29,11 +29,11 @@ function SearchedBook() {
         // Handle other changes if necessary
     };
     return (
-        <div className="flex flex-row bg-white bg-opacity-80 w-10/12 h-64 shadow-md shadow-slate-900 rounded-md shrink mb-2">
-            <div className="flex flex-col justify-center items-center w-2/12 py-2">
-                <img className="w-8/12 rounded-sm" src='./img/avators/alice.jpg' alt="Alice in Wonderland" />
+        <div className="flex flex-row bg-white bg-opacity-90 w-10/12 h-2/5 shadow-md shadow-slate-900 rounded-md shrink ">
+            <div className="flex flex-col justify-center items-center w-2/12">
+                <img className="w-8/12 rounded-sm" src='./public/avators/alice.jpg' alt="Alice in Wonderland" />
               
-                <select id="listSelect" onChange={handleSelectChange} className="w-2/12 text-sky-100 text-center bg-sky-600 w-28 h-8 m-1 shadow-inner shadow-white">
+                <select id="listSelect" onChange={handleSelectChange} className=" text-sky-100 text-center text-lg bg-sky-600 w-4/6 h-1/6 m-1 shadow-inner shadow-white font-serif">
                     {collections.map((collection) => (
                         <option key={collection.value} value={collection.value}>{collection.text}</option>
                     ))}
@@ -41,11 +41,10 @@ function SearchedBook() {
                 </select>
             </div>
             <div className="flex flex-col w-10/12 mr-8 overflow: auto">
-                <p className="text-orange-950 text-left text-2xl justify-self-center font-bold antialiased mt-2">Alice in Wonderland <span className="text-blue-600 text-sm">(2019)</span></p>
-                <p className="text-orange-950 text-left text-lg justify-self-center font-bold antialiased my-2">by Carroll</p>
-                <p className="text-orange-950 text-left text-lg justify-self-center font-serif antialiased">ISBN:</p>
-                <p className="text-orange-950 text-left text-lg justify-self-center font-bold antialiased">The story tells of a young girl who falls down a rabbit hole into a hallucinogenic world populated by talking packs of cards, and animals who look at pocket watches, smoke pipes and have tea parties.</p>
-                <p className="text-orange-950 text-left text-lg justify-self-center font-bold antialiased">Reviews: ?</p>
+                <p className="text-[#001828] text-left text-2xl justify-self-center font-bold antialiased mt-2">Alice in Wonderland <span className="text-blue-600 text-sm">(2019)</span></p>
+                <p className="text-[#001828] text-left text-lg justify-self-center font-bold antialiased my-2">by Carroll</p>
+                <p className="text-[#001828] text-left text-lg justify-self-center font-serif antialiased">ISBN:</p>
+                <p className="text-[#001828] text-left text-lg justify-self-center font-bold antialiased overflow-auto">The story tells of a young girl who falls down a rabbit hole into a hallucinogenic world populated by talking packs of cards, and animals who look at pocket watches, smoke pipes and have tea parties.</p>
             </div>
         </div>
     );
