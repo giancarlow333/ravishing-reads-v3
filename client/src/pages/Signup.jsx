@@ -97,7 +97,7 @@ function Signup() {
                         Sign Up
                     </button>
 
-                    <a href="/login" 
+                    <a href="/" 
                        className="font-extrabold m-5 text-green-500 text-xl outline outline-1 outline-green-500 outline-offset-4 hover:outline-dashed">
                         Login Instead
                     </a>
