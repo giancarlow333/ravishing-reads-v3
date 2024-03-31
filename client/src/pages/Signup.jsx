@@ -98,7 +98,7 @@ function Signup() {
                     </button>
 
                     <a href="/" 
-                       className="font-extrabold m-5 text-green-500 text-xl outline outline-1 outline-green-500 outline-offset-4 hover:outline-dashed">
+                       className="bg-black font-extrabold m-5 text-green-500 text-xl outline outline-1 outline-green-500 outline-offset-4 hover:outline-dashed">
                         Login Instead
                     </a>
                 </form>
