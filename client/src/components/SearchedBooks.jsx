@@ -33,10 +33,19 @@ function SearchedBook() {
         }
         // Handle other changes if necessary
         else if (event.target.value === 'alreadyRead') {
+            console.log("Already Read is selected");
             addToAlreadyRead({ variables: {
                 profileId: Auth.getProfile().data._id, bookId: "656836c433703d499a5a6078"
             }});
+            console.log ("Already Read!"); 
         }
+        else { console.log ("ELSE!"); }
+        let listSelectValue = event.target.value;
+        console.log("listSelectValue: ", listSelectValue);
+    };
+    const handleButtonClick = (event) => {
+        handleSelectChange(event);
+        console.log("Button clicked");
     };
     return ( // Currently uses placeholder data
         <div className="flex flex-row bg-white bg-opacity-90 w-10/12 h-3/5 shadow-md shadow-slate-900 rounded-md shrink ">
@@ -49,7 +58,7 @@ function SearchedBook() {
                     ))}
                     <option value="createNew">Create New List</option>
                 </select>
-                <button id="listButton" onChange={handleSelectChange} className=" text-sky-100 text-center text-lg bg-sky-600 w-4/6 h-1/6 m-1 shadow-inner shadow-white font-serif">This is a button</button>
+                <button id="listButton" onClick={handleButtonClick} className=" text-sky-100 text-center text-lg bg-sky-600 w-4/6 h-1/6 m-1 shadow-inner shadow-white font-serif">This is a button</button>
             </div>
             <div className="flex flex-col w-9/12 h-11/12 mr-8">
                 <p className="text-[#001828] text-left text-2xl justify-self-center font-bold antialiased mt-2">Alice in Wonderland <span className="text-blue-600 text-sm">(2019)</span></p>
