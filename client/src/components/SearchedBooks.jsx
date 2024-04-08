@@ -25,8 +25,12 @@ function SearchedBook() {
     const handleSelectChange = (event) => {
         // Make the button visible
         document.getElementById("listButton").classList.remove("invisible");
+    };
+    const handleButtonClick = (event) => {
+        let selected_value = document.getElementById("listSelect").value;
+        console.log("selected: ", selected_value);
 
-        if (event.target.value === 'createNew') {
+        if (selected_value === 'createNew') {
             // Trigger modal or input field to add new collection
             // For simplicity, let's assume a prompt is used
             const newListName = prompt("Enter new list name");
@@ -35,7 +39,7 @@ function SearchedBook() {
             }
         }
         // Handle other changes if necessary
-        else if (event.target.value === 'alreadyRead') {
+        else if (selected_value === 'alreadyRead') {
             console.log("Already Read is selected");
             addToAlreadyRead({ variables: {
                 profileId: Auth.getProfile().data._id, bookId: "656836c433703d499a5a6078"
@@ -56,7 +60,7 @@ function SearchedBook() {
                     ))}
                     <option value="createNew">Create New List</option>
                 </select>
-                <button id="listButton" className="invisible text-sky-100 text-center text-lg bg-sky-600 w-4/6 h-1/6 m-1 shadow-inner shadow-white font-serif">This is a button</button>
+                <button id="listButton" onClick={handleButtonClick} className="invisible text-sky-100 text-center text-lg bg-sky-600 w-4/6 h-1/6 m-1 shadow-inner shadow-white font-serif">This is a button</button>
             </div>
             <div className="flex flex-col w-9/12 h-11/12 mr-8">
                 <p className="text-[#001828] text-left text-2xl justify-self-center font-bold antialiased mt-2">Alice in Wonderland <span className="text-blue-600 text-sm">(2019)</span></p>
