@@ -2,7 +2,7 @@
 import { useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import Auth from '../utils/auth';
-import { ADD_TO_ALREADY_READ } from '../utils/mutations';
+import { ADD_TO_ALREADY_READ, ADD_TO_TO_READS, ADD_TO_WISHLIST } from '../utils/mutations';
 
 function SearchedBook() {
     console.log(Auth.getProfile().data._id);
@@ -21,6 +21,8 @@ function SearchedBook() {
     };
 
     const [addToAlreadyRead, { data, loading, error }] = useMutation(ADD_TO_ALREADY_READ);
+    const [addToReadingList] = useMutation(ADD_TO_TO_READS);
+    const [addToWishlist] = useMutation(ADD_TO_WISHLIST);
     // Example function to handle 'Create New List' option
     const handleSelectChange = (event) => {
         // Make the button visible
@@ -42,9 +44,23 @@ function SearchedBook() {
         else if (selected_value === 'alreadyRead') {
             console.log("Already Read is selected");
             addToAlreadyRead({ variables: {
+                profileId: Auth.getProfile().data._id, bookId: "656836c433703d499a5a6088"
+            }});
+            console.log ("Added to Already Read!"); 
+        }
+        else if (selected_value === 'readingList') {
+            console.log("Reading List is selected");
+            addToReadingList({ variables: {
                 profileId: Auth.getProfile().data._id, bookId: "656836c433703d499a5a6078"
             }});
-            console.log ("Already Read!"); 
+            console.log ("Added to Reading List!"); 
+        }
+        else if (selected_value === 'wishlist') {
+            console.log("Wishlist is selected");
+            addToWishlist({ variables: {
+                profileId: Auth.getProfile().data._id, bookId: "656836c433703d499a5a6078"
+            }});
+            console.log ("Added to Wishlist!"); 
         }
         else { console.log ("ELSE!"); }
     };
@@ -60,7 +76,7 @@ function SearchedBook() {
                     ))}
                     <option value="createNew">Create New List</option>
                 </select>
-                <button id="listButton" onClick={handleButtonClick} className="invisible text-sky-100 text-center text-lg bg-sky-600 w-4/6 h-1/6 m-1 shadow-inner shadow-white font-serif">This is a button</button>
+                <button id="listButton" onClick={handleButtonClick} className="invisible text-sky-100 text-center text-lg bg-sky-600 w-4/6 h-1/6 m-1 shadow-inner shadow-white font-serif">Add book!</button>
             </div>
             <div className="flex flex-col w-9/12 h-11/12 mr-8">
                 <p className="text-[#001828] text-left text-2xl justify-self-center font-bold antialiased mt-2">Alice in Wonderland <span className="text-blue-600 text-sm">(2019)</span></p>
