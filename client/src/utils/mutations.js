@@ -145,19 +145,17 @@ mutation addToAlreadyRead($profileId: ID!, $bookId: ID!)  {
 `;
 
 export const ADD_TO_WISHLIST = gql`
-mutation addToWishlist($_id: ID!, $bookId: ID!){
-  addToWishlist(_id: $_id, bookId: $bookId){
-    user
-    email
+mutation addToWishlist($profileId: ID!, $bookId: ID!) {
+  addToWishlist(profileId: $profileId, bookId: $bookId) {
+    username
   }
 }
 `;
 
 export const ADD_TO_TO_READS = gql`
-mutation addTo_ToReads($_id: ID!, $bookId: ID!){
-  aaddTo_ToReads(_id:$_id, bookId: $bookId){
-    user
-    email
+mutation addTo_ToReads($profileId: ID!, $bookId: ID!){
+  addTo_ToReads(profileId: $profileId, bookId: $bookId){
+    username
   }
 }
 `;

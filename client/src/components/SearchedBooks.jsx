@@ -20,10 +20,11 @@ function SearchedBook() {
         setCollections([...collections, newCollection]);
     };
 
+    // See https://stackoverflow.com/questions/71179586/can-i-make-multiple-usemutation-in-a-components
     const [addToAlreadyRead, { data, loading, error }] = useMutation(ADD_TO_ALREADY_READ);
-    const [addToReadingList] = useMutation(ADD_TO_TO_READS);
-    const [addToWishlist] = useMutation(ADD_TO_WISHLIST);
-    // Example function to handle 'Create New List' option
+    const [addToReadingList, { data: rlData, loading: rlLoading, error: rlError }] = useMutation(ADD_TO_TO_READS);
+    const [addToWishlist, { data: wlData, loading: wlLoading, error: wlError }] = useMutation(ADD_TO_WISHLIST);
+    // Function to handle 'Create New List' option
     const handleSelectChange = (event) => {
         // Make the button visible
         document.getElementById("listButton").classList.remove("invisible");
