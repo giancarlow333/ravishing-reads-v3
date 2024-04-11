@@ -12,6 +12,7 @@ import Login from './pages/Login.jsx';
 import Signup from './pages/Signup.jsx';
 import Mylist from './pages/Mylist.jsx';
 import Book from './pages/Book.jsx';
+import Wishlist from './pages/Wishlist.jsx';
 // Define the accessible routes, and which components respond to which URL
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path: 'books',
         element: <Book />,
+      },
+      {
+        path: 'wishlist',
+        element: <Wishlist />,
       },
     ],
   },
