@@ -9,7 +9,7 @@ function List() {
     <div className="flex flex-row h-16 w-11/12 justify-between rounded-lg m-4 overflow-auto bg-sky-500  hover:bg-white outline outline-4 outline-white outline-offset-4 hover:outline-sky-600">
       <Link
         className="w-full h-full font-extrabold text-black pt-3 px-4 text-3xl antialiased"
-        to={`/books/`}
+        to={`/readinglist/`}
       >
         Reading List
       </Link>
@@ -25,7 +25,7 @@ function List() {
     <div className="flex flex-row h-16 w-11/12 justify-between rounded-lg m-4 overflow-auto bg-sky-500  hover:bg-white outline outline-4 outline-white outline-offset-4 hover:outline-sky-600">
         <Link
           className="w-full h-full font-extrabold text-black pt-3 px-4 text-3xl antialiased"
-          to={`/books/`}
+          to={`/alreadyread/`}
         >
           Already Read
         </Link>

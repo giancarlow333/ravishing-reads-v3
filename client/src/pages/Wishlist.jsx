@@ -7,6 +7,7 @@ import { QUERY_WISHLIST } from '../utils/queries';
 const Wishlist = () => {
     const { loading, data } = useQuery(QUERY_WISHLIST);
     const books = data?.books || [];
+    console.log(books);
     
     if (!books.length) {
         return <h3>No books Yet</h3>;
