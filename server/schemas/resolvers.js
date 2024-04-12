@@ -18,7 +18,8 @@ const resolvers = {
     },
 
     wishlist: async (parent, { profileId }) => {
-      return Profile.findOne({ _id: profileId }).populate({path: 'Wishlist'}).select("Wishlist");
+      //https://stackoverflow.com/questions/31357745/find-after-populate-mongoose
+      return Profile.find({ _id: profileId }).populate("Wishlist").select("Wishlist");
     },
 
     toReads: async (parent, { profileId }) => {
@@ -26,7 +27,7 @@ const resolvers = {
     },
 
     alreadyRead: async (parent, { profileId }) => {
-      return Profile.findOne({ _id: profileId }).populate({path: 'Already_Read'}).select("Already_Read");
+      return Profile.find({ _id: profileId }).populate({path: 'Already_Read'}).select("Already_Read");
     },
 
     book: async (parent, { bookId }) => {
