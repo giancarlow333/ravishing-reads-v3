@@ -19,7 +19,7 @@ const resolvers = {
 
     wishlist: async (parent, { profileId }) => {
       //https://stackoverflow.com/questions/31357745/find-after-populate-mongoose
-      return Profile.find({ _id: profileId }).populate("Wishlist").select("Wishlist");
+      return Profile.find({ _id: profileId }).populate('Wishlist').exec();
     },
 
     toReads: async (parent, { profileId }) => {

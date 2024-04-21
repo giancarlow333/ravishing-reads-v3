@@ -24,21 +24,21 @@ const profileSchema = new Schema({
   [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Books'
+      ref: 'Books',
     }
   ],
   To_Reads: 
   [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Books'
+      ref: 'Books',
     }
   ],
   Wishlist: 
   [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Books'
+      ref: 'Books',
     }
   ],
 },
@@ -82,6 +82,6 @@ profileSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-const Profile = model('Profile', profileSchema);
+const Profile = model('Profile', profileSchema, 'Profile');
 
 module.exports = Profile;
