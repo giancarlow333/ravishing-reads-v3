@@ -19,7 +19,10 @@ const resolvers = {
 
     wishlist: async (parent, { profileId }) => {
       //https://stackoverflow.com/questions/31357745/find-after-populate-mongoose
-      return Profile.find({ _id: profileId }).populate('Wishlist').exec();
+      //https://stackoverflow.com/questions/51917664/unable-to-populate-documents-using-mongoose-populate
+      //https://stackoverflow.com/questions/49581665/mongoose-populate-is-populating-the-wrong-document
+      // https://stackoverflow.com/questions/57956040/mongoose-populate-function-does-not-populate !?!
+      return Profile.find({ _id: profileId }).populate({ path: "Wishlist"});
     },
 
     toReads: async (parent, { profileId }) => {
