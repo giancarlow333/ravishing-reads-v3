@@ -2,10 +2,10 @@ import Header from '../components/Header';
 // Import `<Link>` component from React Router for internal hyperlinks
 import { useQuery } from '@apollo/client';
 import BookList from '../components/BookList';
-import { QUERY_WISHLIST } from '../utils/queries';
+import { QUERY_ALREADYREAD } from '../utils/queries';
 
-const Wishlist = () => {
-    const { loading, data } = useQuery(QUERY_WISHLIST);
+const AlreadyRead = () => {
+    const { loading, data } = useQuery(QUERY_ALREADYREAD);
     const books = data?.books || [];
     console.log(books);
     
@@ -22,4 +22,4 @@ const Wishlist = () => {
         </div>
     ); 
 }
-export default Wishlist;
+export default AlreadyRead;

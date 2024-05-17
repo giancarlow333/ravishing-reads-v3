@@ -59,7 +59,7 @@ function SearchedBook() {
         else if (selected_value === 'wishlist') {
             console.log("Wishlist is selected");
             addToWishlist({ variables: {
-                profileId: Auth.getProfile().data._id, bookId: "656836c433703d499a5a6078"
+                profileId: Auth.getProfile().data._id, bookId: "6608da54f990723f5e23d04c"
             }});
             console.log ("Added to Wishlist!"); 
         }

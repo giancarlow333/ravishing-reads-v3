@@ -18,7 +18,12 @@ const resolvers = {
     },
 
     wishlist: async (parent, { profileId }) => {
-      return Profile.findOne({ _id: profileId }).populate({path: 'Wishlist'}).select("Wishlist");
+      //https://stackoverflow.com/questions/31357745/find-after-populate-mongoose
+      //https://stackoverflow.com/questions/51917664/unable-to-populate-documents-using-mongoose-populate
+      //https://stackoverflow.com/questions/49581665/mongoose-populate-is-populating-the-wrong-document
+      // https://stackoverflow.com/questions/57956040/mongoose-populate-function-does-not-populate !?!
+      // https://stackoverflow.com/questions/60935795/mongoose-populate-not-working-as-desired?rq=3
+      return Profile.find({ _id: profileId}).populate({ path: "Wishlist" });
     },
 
     toReads: async (parent, { profileId }) => {
@@ -26,7 +31,7 @@ const resolvers = {
     },
 
     alreadyRead: async (parent, { profileId }) => {
-      return Profile.findOne({ _id: profileId }).populate({path: 'Already_Read'}).select("Already_Read");
+      return Profile.find({ _id: profileId }).populate({path: 'Already_Read'}).select("Already_Read");
     },
 
     book: async (parent, { bookId }) => {

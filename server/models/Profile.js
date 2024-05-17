@@ -20,30 +20,27 @@ const profileSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  Already_Read: 
-  [
+  Already_Read: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Books'
+      ref: 'Books',
     }
   ],
-  To_Reads: 
-  [
+  To_Reads: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Books'
+      ref: 'Books',
     }
   ],
-  Wishlist: 
-  [
-    {
+  Wishlist: [{
       type: Schema.Types.ObjectId,
-      ref: 'Books'
-    }
-  ],
+      ref: 'Books',
+  }],
 },
-{ toJSON: {
-    virtuals: true}});
+  { toJSON: {
+    virtuals: true
+  }
+});
 
 // set up pre-save middleware to create password
 profileSchema.pre("save", async function (next) {
@@ -82,6 +79,6 @@ profileSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-const Profile = model('Profile', profileSchema);
+const Profile = model('Profile', profileSchema, 'Profile');
 
 module.exports = Profile;
