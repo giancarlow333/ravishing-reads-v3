@@ -23,7 +23,9 @@ const resolvers = {
       //https://stackoverflow.com/questions/49581665/mongoose-populate-is-populating-the-wrong-document
       // https://stackoverflow.com/questions/57956040/mongoose-populate-function-does-not-populate !?!
       // https://stackoverflow.com/questions/60935795/mongoose-populate-not-working-as-desired?rq=3
-      return Profile.find({ _id: profileId}).populate({ path: "Wishlist" });
+      console.log("query profileId: ", profileId);
+      console.log(Profile.findOne({ _id: profileId}).populate({ path: "Wishlist" }));
+      return Profile.findOne({ _id: profileId}).populate({ path: "Wishlist" });
     },
 
     toReads: async (parent, { profileId }) => {

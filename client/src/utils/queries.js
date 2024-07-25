@@ -238,24 +238,26 @@ query getBookNote($bookId: ID!, $profileId: ID!) {
 
 export const QUERY_WISHLIST = gql`
   query wishlist($profileId: ID!) {
-    wishlist(profileId: $profileId) {
-      _id
-      title
-      author
-      ISBN
-      publisher
-      pub_Date
-      description
-      page_Count
-      img_Link
-      link
-      lastAccessed
-      notes {
+    profile(profileId: $profileId) {
+      Wishlist {
         _id
-        createdAt
-        user { _id }
-        noteText
-        rating
+        title
+        author
+        ISBN
+        publisher
+        pub_Date
+        description
+        page_Count
+        img_Link
+        link
+        lastAccessed
+        notes {
+          _id
+          createdAt
+          # userId
+          noteText
+          rating
+        }
       }
     }
   }
