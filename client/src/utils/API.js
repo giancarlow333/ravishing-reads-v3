@@ -1,4 +1,5 @@
-var books = require("google-books-search");
+
+import {books} from 'google-books-search'
 
 function bookQuery(searchTerm) {
     return new Promise((resolve, reject) => {
@@ -28,17 +29,16 @@ function bookQuery(searchTerm) {
           })
   
           resolve(cleanResults)
-          console.log(cleanResults[0]);
+          console.log(cleanResults);
         } else {
           reject(error);
         }
       });
     });
   }
-
   
-  module.exports = { bookQuery };
+//  module.exports = { bookQuery };
   
 
 
-export default search;
+export default bookQuery;
