@@ -75,7 +75,7 @@ button:focus-visible {
 * {
   box-sizing: border-box;
 }
-//to void defilt inout bozex decorations
+/* to void defilt inout bozex decorations */
 input.middle:focus {
   outline-width: 0;
 }
@@ -122,7 +122,7 @@ z-index: -1;
 outline: 1px dotted #000;
 }
 
-//Quick Add Button
+/*Quick Add Button  */
 .hidden {
   display: none;
 }

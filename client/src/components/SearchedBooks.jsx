@@ -2,9 +2,10 @@
 import { useMutation } from '@apollo/client';
 import React, { useState } from 'react';
 import Auth from '../utils/auth';
+import BookQuery from '../utils/API'
 import { ADD_TO_ALREADY_READ, ADD_TO_TO_READS, ADD_TO_WISHLIST } from '../utils/mutations';
 
-function SearchedBook() {
+function SearchedBooks() {
     console.log(Auth.getProfile().data._id);
     const initialCollections = [
         { value: 'readingList', text: 'Reading List' },
@@ -90,4 +91,4 @@ function SearchedBook() {
     
 }
 
-export default SearchedBook;
+export default SearchedBooks;

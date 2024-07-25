@@ -36,7 +36,7 @@ Collaborators:
 Giancarlo Whitaker
 Brandon Lopez
 Alex Rodriguez
-Jenny wanier
+Jenny Wannier
 Frank Romero
 
 ## Tests
