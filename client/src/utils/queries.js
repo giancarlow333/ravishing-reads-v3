@@ -241,7 +241,23 @@ export const QUERY_WISHLIST = gql`
     profile(profileId: $profileId) {
       Wishlist {
         _id
+        title
         author
+        ISBN
+        publisher
+        pub_Date
+        description
+        page_Count
+        img_Link
+        link
+        lastAccessed
+        notes {
+          _id
+          createdAt
+          # userId
+          noteText
+          rating
+        }
       }
     }
   }
